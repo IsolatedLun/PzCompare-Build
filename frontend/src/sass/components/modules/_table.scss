@@ -1,0 +1,45 @@
+@use '../../abstracts/'as *;
+
+.object-table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+// Table header
+.object-table thead td:first-child {
+    border-top-left-radius: $table-thead-border-radius;
+    border-bottom-left-radius: $table-thead-border-radius;
+}
+
+.object-table thead td:last-child {
+    border-top-right-radius: $table-thead-border-radius;
+}
+
+.object-table thead td {
+    padding: 0.5em 0.9em;
+    background-color: $clr-table-thead;
+}
+
+// Table data
+.object-table tr td:first-child {
+    background-color: var(--clr-background-400);
+    font-weight: bold;
+    color: var(--clr-text-muted);
+    border: none;
+}
+
+
+.object-table tr td {
+    padding: 0.6em 0.9em;
+    border-bottom: 2px solid hsl(0 0% 50% / 0.46);
+}
+
+.object-table td[data-percent="1"] {
+    color: $clr-table-pct-green-text;
+    background-color: $clr-table-pct-green;
+}
+
+.object-table td[data-percent="-1"] {
+    color: $clr-table-pct-red-text;
+    background-color: $clr-table-pct-red;
+}

@@ -1,0 +1,30 @@
+@use 'sass:string';
+
+$i: 0;
+$max-sizes: 5;
+$base-spacing-size: 1em;
+
+$operators: inline, block, top, right, left, bottom;
+
+@for $_ from 1 through $max-sizes {
+    $i : $i + 1;
+    $size: $base-spacing-size * ( $i * 0.5 );
+
+    .padding-#{$i} {
+        padding: #{$size};
+    }
+
+    .margin-#{$i} {
+        margin: #{$size};
+    }
+
+    @each $op in $operators {
+        .padding-#{$op}-#{$i} {
+            padding-#{$op}: #{$size};
+        }
+
+        .margin-#{$op}-#{$i} {
+            margin-#{$op}: #{$size};
+        }
+    }
+}

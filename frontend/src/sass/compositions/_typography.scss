@@ -1,0 +1,14 @@
+@use '../abstracts/' as *;
+
+.after-content {
+    position: relative;
+}
+
+.after-content::after {
+    @include pseudo-element(attr(data-after-text));
+
+    font-size: $after-content-font-size;
+    padding: $after-content-spacing;
+    background-color: $clr-after-content;
+    border-radius: $after-content-border-radius;
+}

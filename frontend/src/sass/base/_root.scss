@@ -10,6 +10,15 @@
     @each $font, $size in $font-sizes {
         --fs-#{$font}: #{$size};
     }
+
+    @each $name, $size in $sizes-desktop {
+        @each $size-key, $size-val in $size {
+            --size-#{$name}-#{$size-key}: #{$size-val};
+        }
+    }
+
+    // Vars
+    --grid-home: 2fr 2fr 2fr;
 }
 
 @media(prefers-color-scheme: dark) {
@@ -23,5 +32,21 @@
         @each $font, $size in $font-sizes {
             --fs-#{$font}: #{$size};
         }
+    }
+}
+
+@media(max-width: #{$breakpoint-small}) {
+    :root {
+        *[data-box-collapse] {
+            display: block !important;
+        }
+    
+        @each $name, $size in $sizes-mobile {
+            @each $size-key, $size-val in $size {
+                --size-#{$name}-#{$size-key}: #{$size-val};
+            }
+        }
+    
+        --grid-home: 1fr;
     }
 }

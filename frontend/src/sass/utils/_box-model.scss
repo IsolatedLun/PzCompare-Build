@@ -1,0 +1,14 @@
+$operator-keys: (
+    align-items, align-content, justify-content, justify-items, justify-self, align-self,
+    place-items, place-content
+);
+
+$operator-values: start, end, center, space-evenly, space-between;
+
+@each $op in $operator-keys {
+    @each $op-val in $operator-values {
+        .#{$op}-#{$op-val} {
+            #{$op}: #{$op-val}
+        }
+    }
+}

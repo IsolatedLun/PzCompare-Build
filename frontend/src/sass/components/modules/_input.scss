@@ -1,3 +1,5 @@
+@use './mixins' as *;
+
 .input {
-    padding: 0.25em 0.5em;
+    @include create-input();
 }

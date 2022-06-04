@@ -1,3 +1,23 @@
+@use '../../abstracts/' as *;
+
 .home {
-    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-columns: $home-grid;
+}
+
+@media screen and (max-width: $breakpoint-small) {
+    .home {
+        grid-template-areas: 'controls' 'table-1' 'table-2';
+    }
+
+    .home-controls {
+        grid-area: controls;
+    }
+    
+    #object-table-1 {
+        grid-area: table-1;
+    }
+    
+    #object-table-2 {
+        grid-area: table-2;
+    }
 }

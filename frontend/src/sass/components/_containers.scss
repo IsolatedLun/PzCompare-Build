@@ -4,3 +4,9 @@
     max-width: $size-main-container;
     margin-inline: auto;
 }
+
+@media screen and (max-width: $breakpoint-small) {
+    .main-container {
+        margin: 0.5em;
+    }
+}

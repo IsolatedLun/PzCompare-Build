@@ -1,0 +1,43 @@
+@use '../../abstracts/' as *;
+
+@mixin create-button (
+    $padding: $default-button-spacing, 
+    $bg: $clr-default-button, 
+    $bg-hover: 
+    $clr-default-button-hover
+) {
+
+    font-size: var(--fs-400);
+    
+    padding: $padding;
+    background-color: $bg;
+
+    border: 2px solid;
+    border-color: $clr-default-button-border;
+
+    cursor: pointer;
+
+    &:is(:hover, :focus) {
+        background-color: $bg-hover;
+    }
+}
+
+@mixin create-input (
+    $padding: $default-input-spacing, 
+    $bg: $clr-default-input, 
+    $border-hover: $clr-default-input-border-hover,
+    $border-radius: $default-input-radius
+) {
+    font-size: var(--fs-500);
+    
+    padding: $padding;
+    background-color: $bg;
+
+    border: 2px solid;
+    border-color: $clr-default-button-border;
+    border-radius: $default-input-radius;
+
+    &:is(:hover, :focus) {
+        border-color: $clr-default-input-border-hover;
+    }
+}

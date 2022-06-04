@@ -12,3 +12,14 @@ $operator-values: start, end, center, space-evenly, space-between;
         }
     }
 }
+
+$box-models: flex-direction;
+$box-values: column, row;
+
+@each $box-model in $box-models {
+    @each $val in $box-values {
+        .#{$box-model}-#{$val} {
+            #{$box-model}: #{$val};
+        }
+    }
+}

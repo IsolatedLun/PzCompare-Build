@@ -47,12 +47,24 @@
     border-bottom: 2px solid hsl(0 0% 50% / 0.46);
 }
 
-.object-table td[data-percent="true"] {
+.object-table td[data-percent="true"],
+p[data-percent="true"] {
     color: $clr-table-pct-green-text;
     background-color: $clr-table-pct-green;
 }
 
-.object-table td[data-percent="false"] {
+.object-table td[data-percent="false"],
+p[data-percent="false"] {
     color: $clr-table-pct-red-text;
     background-color: $clr-table-pct-red;
+}
+
+@media screen and (max-width: $breakpoint-small) {
+    .object-table thead td {
+        border-radius: 0 !important;
+    }
+    
+    .object-table[data-dir='right'] {
+        direction: ltr;
+    }
 }

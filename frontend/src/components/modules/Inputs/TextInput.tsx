@@ -1,8 +1,13 @@
 import React from 'react'
+import { createCubeCSSClass, propOrDefault } from '../../../utils/funcs'
+import { Props_Input } from './types'
 
-const TextInput = () => {
+const TextInput = (props: Props_Input) => {
   return (
-    <input className='[ input ]' type="text" />
+    <input 
+      placeholder={propOrDefault(props.placeholder, '')} 
+      className={createCubeCSSClass(props)} type="text" 
+      />
   )
 }
 

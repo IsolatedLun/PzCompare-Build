@@ -37,8 +37,12 @@
 
 @media(max-width: #{$breakpoint-small}) {
     :root {
-        *[data-box-collapse] {
-            display: block !important;
+        *[data-flex-collapse] {
+            flex-direction: column !important;
+        }
+
+        *[data-grid-collapse] {
+            grid-template-columns: 1fr !important;
         }
     
         @each $name, $size in $sizes-mobile {

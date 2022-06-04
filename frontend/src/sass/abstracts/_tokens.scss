@@ -9,6 +9,19 @@ $size-main-container: var(--size-container-main);
 // Home
 $home-grid: var(--grid-home);
 
+// Button
+$clr-default-button: var(--clr-background-300);
+$clr-default-button-hover: var(--clr-background-500);
+$clr-default-button-border: var(--clr-hover-400);
+$default-button-spacing: 0.75em;
+
+// Input 
+$clr-default-input: var(--clr-background-300);
+$clr-default-input-border-hover: blue;
+$clr-default-button-border: var(--clr-hover-400);
+$default-input-spacing: 0.25em 0.6em;
+$default-input-radius: 8px;
+
 // Object Table
 $table-thead-spacing: 0.4em;
 

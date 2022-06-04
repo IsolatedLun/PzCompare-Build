@@ -24,8 +24,13 @@ $colors-dark: (
     table: (
         'green': rgba(7 208 30 / 0.26),
         'green-text': rgba(7 208 30),
-        'red': rgba(201 0 10 / 0.16),
+        'red': rgba(201 0 10 / 0.26),
         'red-text': hsl(0 100% 49%)
+    ),
+
+    input: (
+        'border': hsl(220 97% 35%),
+        'shadow': hsl(220 97% 45% / 0.36)
     )
 );
 

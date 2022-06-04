@@ -3,12 +3,15 @@ export interface Props_ObjectTable {
     
     idx: number;
 
-    object: {
-        DisplayName: string;
-        MaxDamage?: string;
-        MinDamage?: string;
-    };
-    diffs: any;
+    data?: {
+        object: {
+            DisplayName: string;
+            MaxDamage?: string;
+            MinDamage?: string;
+        };
+
+        diffs: any;
+    }
 }
 
 export interface Props_TableRow {

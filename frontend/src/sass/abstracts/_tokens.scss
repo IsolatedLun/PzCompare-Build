@@ -17,10 +17,11 @@ $default-button-spacing: 0.75em;
 
 // Input 
 $clr-default-input: var(--clr-background-300);
-$clr-default-input-border-hover: blue;
+$clr-default-input-border-hover: var(--clr-input-border);
 $clr-default-button-border: var(--clr-hover-400);
 $default-input-spacing: 0.25em 0.6em;
 $default-input-radius: 8px;
+$shadow-default-input: 0 0 1px 3px var(--clr-input-shadow);
 
 // Object Table
 $table-thead-spacing: 0.4em;

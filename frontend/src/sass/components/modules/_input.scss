@@ -1,5 +1,10 @@
-@use './mixins' as *;
+@use '../mixins' as *;
+@use '../../abstracts/' as *;
 
 .input {
-    @include create-input();
+    @include create-input($border-hover: pink);
+
+    &:is(:hover, :focus) {
+        box-shadow: $shadow-default-input;
+    }
 }

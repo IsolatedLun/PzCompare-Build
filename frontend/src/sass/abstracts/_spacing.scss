@@ -6,6 +6,9 @@ $base-spacing-size: 1em;
 
 $operators: inline, block, top, right, left, bottom;
 
+$logical-ops: inline, block;
+$logical-ops-vals: start, end;
+
 @for $_ from 1 through $max-sizes {
     $i : $i + 1;
     $size: $base-spacing-size * ( $i * 0.5 );
@@ -37,6 +40,18 @@ $operators: inline, block, top, right, left, bottom;
 
         .margin-#{$op}-#{$i} {
             margin-#{$op}: #{$size};
+        }
+    }
+
+    @each $log-op in $logical-ops {
+        @each $log-val in $logical-ops-vals {
+            .padding-#{$log-op}-#{$log-val}-#{$i} {
+                padding-#{$log-op}-#{$log-val}: #{$size};
+            }
+    
+            .margin-#{$log-op}-#{$log-val}-#{$i} {
+                margin-#{$log-op}-#{$log-val}: #{$size};
+            }
         }
     }
 }

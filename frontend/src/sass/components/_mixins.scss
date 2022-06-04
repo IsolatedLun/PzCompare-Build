@@ -1,4 +1,4 @@
-@use '../../abstracts/' as *;
+@use '../abstracts/' as *;
 
 @mixin create-button (
     $padding: $default-button-spacing, 
@@ -39,5 +39,17 @@
 
     &:is(:hover, :focus) {
         border-color: $clr-default-input-border-hover;
+    }
+}
+
+@mixin diagonal-border($dir) {
+    @if $dir == ltr {
+        border-top-left-radius: $table-thead-border-radius;
+        border-bottom-left-radius: $table-thead-border-radius;
+    }
+
+    @else if $dir == rtl {
+        border-top-right-radius: $table-thead-border-radius;
+        border-bottom-right-radius: $table-thead-border-radius;
     }
 }

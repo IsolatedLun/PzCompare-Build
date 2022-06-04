@@ -1,4 +1,5 @@
 @use '../../abstracts/'as *;
+@use '../mixins' as *;
 
 .object-table {
     border-collapse: collapse;
@@ -7,25 +8,23 @@
 
 // Table header
 .object-table[data-dir='left'] thead td:first-child {
-    border-top-left-radius: $table-thead-border-radius;
-    border-bottom-left-radius: $table-thead-border-radius;
+    @include diagonal-border(ltr);
+}
+
+.object-table[data-dir='right'] thead td:first-child {
+    @include diagonal-border(rtl);
 }
 
 .object-table[data-dir='left'] thead td:last-child {
     border-top-right-radius: $table-thead-border-radius;
 }
 
-.object-table[data-dir='right'] {
-    direction: rtl;
-}
-
-.object-table[data-dir='right'] thead td:first-child {
-    border-top-right-radius: $table-thead-border-radius;
-    border-bottom-right-radius: $table-thead-border-radius;
-}
-
 .object-table[data-dir='right'] thead td:last-child {
     border-top-left-radius: $table-thead-border-radius;
+}
+
+.object-table[data-dir='right'] {
+    direction: rtl;
 }
 
 .object-table thead td {

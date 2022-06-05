@@ -17,3 +17,12 @@
     font-family: 'Font Awesome 5 Free';
     font-weight: bold;
 }
+
+.text-muted {
+    color: var(--clr-text-muted);
+}
+
+// Misc
+*[data-sr] {
+    font-size: 0px;
+}

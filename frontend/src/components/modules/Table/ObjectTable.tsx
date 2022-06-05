@@ -20,10 +20,10 @@ const TableRow = (props: Props_TableRow) => {
 const ObjectTable = (props: Props_ObjectTable) => {
   const [obj, setObj] = useState(props.data);
 
-  if(obj)
+  if(obj && obj?.object.length > 0)
     return (
       <div className="[ flex-direction-column ] [ gap-2 ]">
-        <ObjectTableHeader name={obj.object.DisplayName} avgPct={-90} />
+        <ObjectTableHeader name={''} avgPct={-90} />
 
         <table id={`object-table-${props.idx}`} 
           className='[ object-table ] [ width-100 ]' 
@@ -34,14 +34,22 @@ const ObjectTable = (props: Props_ObjectTable) => {
                 <td>Pct</td>
             </thead>
             {
-              Object.entries(obj.object).map(([key, value]) => (
-                <TableRow keyName={key} value={value} pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+              Object.entries(obj.object).map(([_, [key, val]]) => (
+                <TableRow 
+                  keyName={key} 
+                  value={val} 
+                  pct={objGet(obj.diffs, `x.${key}`, undefined)} />
               ))
             }
         </table>
       </div>
     )
-  return <h2 data-desktop>No Data.</h2>
+  return (
+    <div className="[ flex-direction-column gap-1 ]">
+      <h2 data-desktop>No Object.</h2>
+      <p className="[ text-muted ]">Try searching something! ({ props.randomName })</p>
+    </div>
+  )
 }
 
 export default ObjectTable;

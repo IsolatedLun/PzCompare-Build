@@ -8,7 +8,6 @@ import { Props_CubeCSS } from "../components/types";
 export function objGet(x: object, path: string, def: any) {
    
     try {
-        console.log(eval(`( ${path} )`))
         return eval(path);
     }
 
@@ -26,4 +25,10 @@ export function createCubeCSSClass(vars: Props_CubeCSS): string {
         [ ${propOrDefault(vars.blockClass, '')} ] 
         [ ${propOrDefault(vars.compostClass, '')} ] 
         [ ${propOrDefault(vars.utilClass, '')} ]`;
+}
+
+export function randomArrLen(maxLen: number): number {
+    const buff = new Uint32Array(10);
+
+    return crypto.getRandomValues(buff)[new Date().getMinutes() % 10] % maxLen;
 }

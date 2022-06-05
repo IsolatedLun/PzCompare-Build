@@ -6,12 +6,15 @@ const HomeMiddleSection = () => {
   return (
     <div className="[ home-controls ] [ flex-direction-column gap-2 ]">
         <TextInput blockClass='input' />
+
         <Button 
         blockClass='button'
         compostClass='icon' 
+        ariaLabel='Compare'
         utilClass='margin-inline-auto border-radius-100vw'>
             { PLUS_ICON }
         </Button>
+        
         <TextInput blockClass='input' />
     </div>
   )

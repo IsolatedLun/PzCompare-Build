@@ -22,6 +22,13 @@
     color: var(--clr-text-muted);
 }
 
+.text-elliptic {
+    max-width: 24ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 // Misc
 *[data-sr] {
     font-size: 0px;

@@ -22,25 +22,29 @@ const ObjectTable = (props: Props_ObjectTable) => {
 
   if(obj && obj?.object.length > 0)
     return (
-      <div className="[ flex-direction-column ] [ gap-2 ]">
-        <ObjectTableHeader name={''} avgPct={-90} />
+      <div 
+        id={`object-table-${props.idx}`} 
+        className="[ flex-direction-column ] [ gap-2 width-100vw ]">
+        <ObjectTableHeader name={props.objectName} avgPct={-90} />
 
-        <table id={`object-table-${props.idx}`} 
-          className='[ object-table ] [ width-100 ]' 
+        <table
+          className='[ object-table ] [ text-center width-100vw ]' 
           data-dir={props.direction}>
             <thead>
                 <td>Name</td>
                 <td>Value</td>
                 <td>Pct</td>
             </thead>
-            {
-              Object.entries(obj.object).map(([_, [key, val]]) => (
-                <TableRow 
-                  keyName={key} 
-                  value={val} 
-                  pct={objGet(obj.diffs, `x.${key}`, undefined)} />
-              ))
-            }
+            <tbody>
+              {
+                Object.entries(obj.object).map(([_, [key, val]]) => (
+                  <TableRow 
+                    keyName={key} 
+                    value={val} 
+                    pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+                ))
+              }
+            </tbody>
         </table>
       </div>
     )

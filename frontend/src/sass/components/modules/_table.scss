@@ -3,7 +3,6 @@
 
 .object-table {
     border-collapse: collapse;
-    text-align: center;
 }
 
 // Table header
@@ -56,14 +55,4 @@ p[data-percent="true"] {
 p[data-percent="false"] {
     color: $clr-table-pct-red-text;
     background-color: $clr-table-pct-red;
-}
-
-@media screen and (max-width: $breakpoint-small) {
-    .object-table thead td {
-        border-radius: 0 !important;
-    }
-    
-    .object-table[data-dir='right'] {
-        direction: ltr;
-    }
 }

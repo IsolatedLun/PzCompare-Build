@@ -1,6 +1,8 @@
 $base-fs-size: 1rem;
+$base-mobile-fs-size: 0.75rem;
+$base-medium-fs-size: 0.8rem;
 
-$font-sizes: (
+$font-sizes-desktop: (
     '200': $base-fs-size * 0.5,
     '300': $base-fs-size * 0.75,
     '400': $base-fs-size,
@@ -10,7 +12,27 @@ $font-sizes: (
     '800': $base-fs-size * 2 
 );
 
-@each $fs, $val in $font-sizes {
+$font-sizes-mobile: (
+    '200': $base-mobile-fs-size * 0.5,
+    '300': $base-mobile-fs-size * 0.75,
+    '400': $base-mobile-fs-size,
+    '500': $base-mobile-fs-size * 1.25,
+    '600': $base-mobile-fs-size * 1.5,
+    '700': $base-mobile-fs-size * 1.75,
+    '800': $base-mobile-fs-size * 2 
+);
+
+$font-sizes-medium: (
+    '200': $base-medium-fs-size * 0.5,
+    '300': $base-medium-fs-size * 0.75,
+    '400': $base-medium-fs-size,
+    '500': $base-medium-fs-size * 1.25,
+    '600': $base-medium-fs-size * 1.5,
+    '700': $base-medium-fs-size * 1.75,
+    '800': $base-medium-fs-size * 2 
+);
+
+@each $fs, $val in $font-sizes-desktop {
     .fs-#{$fs} {
         font-size: var(--fs-#{$fs});
     }

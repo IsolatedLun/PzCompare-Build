@@ -5,7 +5,7 @@ import { Props_ObjectTableHeader } from './types'
 const ObjectTableHeader = (props: Props_ObjectTableHeader) => {
   return (
     <header className="[ flex justify-content-space-between align-items-center ] [ width-100 ]">
-        <h3>{ props.name }</h3>
+        <h3 className='[ text-elliptic ]'>{ props.name }</h3>
         <Percent pct={props.avgPct} />
     </header>
   )

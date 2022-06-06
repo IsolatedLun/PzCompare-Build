@@ -1,12 +1,6 @@
 @use '../abstracts/' as *;
 
 .main-container {
-    max-width: $size-main-container;
+    max-width: 1300px;
     margin-inline: auto;
-}
-
-@media screen and (max-width: $breakpoint-small) {
-    .main-container {
-        margin: 0.5em;
-    }
 }

@@ -7,7 +7,7 @@
         }
     }
 
-    @each $font, $size in $font-sizes {
+    @each $font, $size in $font-sizes-desktop {
         --fs-#{$font}: #{$size};
     }
 
@@ -18,7 +18,8 @@
     }
 
     // Vars
-    --grid-home: 2fr 2fr 2fr;
+    --grid-home: repeat(3, 1fr);
+    --grid-home-areas: '_tableOne _controls _tableTwo';
 }
 
 @media(prefers-color-scheme: dark) {
@@ -28,29 +29,5 @@
                 --clr-#{$name}-#{$clr-key}: #{$clr-val};
             }
         }
-
-        @each $font, $size in $font-sizes {
-            --fs-#{$font}: #{$size};
-        }
-    }
-}
-
-@media(max-width: #{$breakpoint-small}) {
-    :root {
-        *[data-flex-collapse] {
-            flex-direction: column !important;
-        }
-
-        *[data-grid-collapse] {
-            grid-template-columns: 1fr !important;
-        }
-    
-        @each $name, $size in $sizes-mobile {
-            @each $size-key, $size-val in $size {
-                --size-#{$name}-#{$size-key}: #{$size-val};
-            }
-        }
-    
-        --grid-home: 1fr;
     }
 }

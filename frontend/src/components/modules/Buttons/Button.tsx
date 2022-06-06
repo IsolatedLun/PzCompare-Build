@@ -11,7 +11,7 @@ const Button = (props: Props_Button) => {
             data-variant={variant}
             aria-label={propOrDefault(props.ariaLabel, 'Button')}
             aria-hidden={props.variant === 'icon'}
-            onClick={(e) => props.onInteract && props.onInteract(e)}
+            onClick={(e) => props.onInteract ? props.onInteract(e) : null}
             >
             { props.children }
         </button>

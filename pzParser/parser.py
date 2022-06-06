@@ -16,14 +16,14 @@ def file_parse(path):
         names = []
         
         for x in re.findall(pattern, x, re.S):
-            name, items = x[0], get_items(x[1])
+            name, items = x[0].lower(), get_items(x[1])
             data[name] = items
             names.append(name)
 
         return [data, names]
 
     def get_items(x):
-        pattern = r'(\w+) = (\w+)'
+        pattern = r'(\w+)\s*=\s*(\w+)'
         
         return re.findall(pattern, x, re.MULTILINE)
 

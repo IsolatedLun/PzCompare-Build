@@ -2,19 +2,17 @@ import ObjectTable from '../../modules/Table/ObjectTable'
 import HomeMiddleSection from './HomeMiddleSection';
 import { randomArrLen } from '../../../utils/funcs';
 import { Props_Home } from './types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Props_Object } from '../../modules/Table/types';
+import { useObjects } from '../../../hooks/useObjects';
 
 const Home = (props: Props_Home) => {
   const { objects, names } = props.masterData;
-
-  const [xObjText, setXObjText] = useState('');
-  const [yObjText, setYObjText] = useState('');
-
-  function compareObjects() {
-    if(xObjText.length > 0 && yObjText.length > 0) {
-      
-    }
-  }
+  const [
+    [xText, yText, xTextSetter, yTextSetter],
+    [xObjSetter, yObjSetter, compareObjs],
+    [xObj, yObj]
+  ] = useObjects(objects);
 
   return (
     <section 
@@ -23,33 +21,27 @@ const Home = (props: Props_Home) => {
       data-grid-collapse>
         <ObjectTable 
           randomName={names[randomArrLen(names.length)]}
-          objectName={xObjText}
+          objectName={xText}
           idx={1} 
           direction='left' 
-          data={{
-            object: objects.tomato,
-            diffs: {'Proteins': 80}
-          }} 
+          data={xObj} 
           />
 
         <HomeMiddleSection 
-          xObjVal={xObjText}
-          yObjVal={yObjText}
+          xObjVal={xText}
+          yObjVal={yText}
 
-          xObjSetter={setXObjText}
-          yObjSetter={setYObjText}
-          compareFunction={compareObjects}
+          xObjSetter={xTextSetter}
+          yObjSetter={yTextSetter}
+          compareFunction={compareObjs}
         />
 
         <ObjectTable 
           randomName={names[randomArrLen(names.length)]}
-          objectName={yObjText}
+          objectName={yText}
           idx={2} 
           direction='right' 
-          data={{
-            object: objects.cabbage,
-            diffs: {"Carbohydrates": 100}
-          }} 
+          data={yObj} 
           />
     </section>
   )

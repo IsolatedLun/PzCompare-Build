@@ -56,3 +56,7 @@ p[data-percent="false"] {
     color: $clr-table-pct-red-text;
     background-color: $clr-table-pct-red;
 }
+
+p[data-percent='-1'] {
+    background-color: var(--clr-hover-400);
+}

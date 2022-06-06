@@ -9,7 +9,7 @@ const Percent = (props: Props_Percent) => {
     <p 
         className='[ padding-inline-2 padding-block-1 border-radius-100vw ]'
         data-percent={dataPct}>
-        <span className='[ icon ] [ margin-inline-end-1 ]'>
+        <span aria-hidden className='[ icon ] [ margin-inline-end-1 ]'>
         {
             dataPct > 0
             ? CARET_UP 

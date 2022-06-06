@@ -18,14 +18,12 @@ const TableRow = (props: Props_TableRow) => {
 }
 
 const ObjectTable = (props: Props_ObjectTable) => {
-  const [obj, setObj] = useState(props.data);
-
-  if(obj && obj?.object.length > 0)
+  if(props.data && props.data.object.length > 0)
     return (
       <div 
         id={`object-table-${props.idx}`} 
         className="[ flex-direction-column ] [ gap-2 width-100vw ]">
-        <ObjectTableHeader name={props.objectName} avgPct={-90} />
+        <ObjectTableHeader name={props.objectName} avgPct={0} />
 
         <table
           className='[ object-table ] [ text-center width-100vw ]' 
@@ -37,11 +35,11 @@ const ObjectTable = (props: Props_ObjectTable) => {
             </thead>
             <tbody>
               {
-                Object.entries(obj.object).map(([_, [key, val]]) => (
+                Object.entries(props.data.object).map(([_, [key, val]]) => (
                   <TableRow 
                     keyName={key} 
                     value={val} 
-                    pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+                    pct={objGet(props.data.diffs, `x.${key}`, undefined)} />
                 ))
               }
             </tbody>

@@ -16,16 +16,16 @@ def file_parse(path):
         names = []
         
         for x in re.findall(pattern, x, re.S):
-            name, items = x[0].lower(), get_items(x[1])
-            data[name] = items
+            name, items = x[0], get_items(x[1])
+            data[name.lower()] = items
             names.append(name)
 
         return [data, names]
 
     def get_items(x):
-        pattern = r'(\w+)\s*=\s*(\w+)'
-        
-        return re.findall(pattern, x, re.MULTILINE)
+        pattern = r'(\w+) = (\w+)'
+
+        return re.findall(pattern, x.strip(), re.MULTILINE)
 
 
     with open(f'{path}.txt', 'r') as f:
@@ -37,7 +37,7 @@ def file_parse(path):
         if data == {}:
             raise Exception('File does not contain valid data')
         
-        with open(f'parsed-{path}.txt', 'w') as f:
+        with open(f'parsed-{path}.json', 'w') as f:
             _dict = {
                 "objects": data,
                 "names": names

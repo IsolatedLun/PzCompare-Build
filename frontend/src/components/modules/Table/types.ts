@@ -7,7 +7,7 @@ export interface Props_ObjectTable {
     
     idx: number;
 
-    data?: Props_Object;
+    data: Props_Object;
 }
 
 export interface Props_Object {

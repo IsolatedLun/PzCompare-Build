@@ -13,10 +13,10 @@ export function useObjects(objects: any):
     function compareObjects() {
         if(xObjText.length > 0 && yObjText.length > 0) {
           if(objects[xObjText] && objects[yObjText]) {
-            setXObj({ object: objects[xObjText], diffs: {} });
-            setYObj({ object: objects[yObjText], diffs: {} });
+            const [xDiffs, yDiffs] = comparator(objects[xObjText], objects[yObjText]);
 
-            comparator(objects[xObjText], objects[yObjText]);
+            setXObj({ object: objects[xObjText], diffs: xDiffs });
+            setYObj({ object: objects[yObjText], diffs: yDiffs });
           }
         }
     }

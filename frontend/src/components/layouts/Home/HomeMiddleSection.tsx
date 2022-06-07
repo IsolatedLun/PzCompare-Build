@@ -17,7 +17,7 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
         compostClass='icon' 
         ariaLabel='Compare'
         utilClass='margin-inline-auto border-radius-100vw'
-        onInteract={() => props.compareFunction()}
+        onInteract={() => { props.compareFunction(); alert('MEOW') }}
         >
             { PLUS_ICON }
         </Button>

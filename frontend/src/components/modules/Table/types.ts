@@ -18,6 +18,7 @@ export interface Props_Object {
 export interface Props_TableRow {
     keyName: string;
     value: string | number;
+
     pct?: number;
 }
 

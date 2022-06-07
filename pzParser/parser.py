@@ -23,7 +23,7 @@ def file_parse(path):
         return [data, names]
 
     def get_items(x):
-        pattern = r'(\w+) = (\w+)'
+        pattern = r'(\w+)\s*=\s*(\S+),'
 
         return re.findall(pattern, x.strip(), re.MULTILINE)
 

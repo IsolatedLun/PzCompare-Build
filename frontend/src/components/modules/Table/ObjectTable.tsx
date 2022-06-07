@@ -7,7 +7,9 @@ const TableRow = (props: Props_TableRow) => {
   return (
     <tr>
       <td>{ props.keyName }</td>
-      <td>{ props.value }</td>
+      <td className='[ dir-ltr ]'>
+        { props.value }
+      </td>
       {
         props.pct 
         ? <td data-percent={props.pct !== null}>{ props.pct }%</td> 

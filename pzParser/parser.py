@@ -1,10 +1,11 @@
 import re
 import json
+from os import walk
 
 """
     Parses PZ text files that contain object data and converts it to JSON.
 """
-def file_parse(path):
+def file_parse(f_name: str, output: str):
     def remove_comments(x):
         pattern = r"/\*.*?\*/"
 
@@ -28,7 +29,7 @@ def file_parse(path):
         return re.findall(pattern, x.strip(), re.MULTILINE)
 
 
-    with open(f'{path}.txt', 'r') as f:
+    with open(f_name, 'r') as f:
         content = f.read()
 
         stripped_data = remove_comments(content)
@@ -37,11 +38,18 @@ def file_parse(path):
         if data == {}:
             raise Exception('File does not contain valid data')
         
-        with open(f'parsed-{path}.json', 'w') as f:
+        with open(output, 'a') as f:
             _dict = {
                 "objects": data,
                 "names": names
             }
 
             json.dump(_dict, f)
-file_parse('stuff')
+
+def bulk_parse(dir: str, output: str):
+    with open(output, 'a'):
+        for dirpath, dirname, f_names in walk(dir):
+            for f_name in f_names:
+                file_parse(f'{dir}/{f_name}', output)
+
+bulk_parse('./files', './parsed.json')

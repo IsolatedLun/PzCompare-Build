@@ -32,3 +32,7 @@ export function randomArrLen(maxLen: number): number {
 
     return crypto.getRandomValues(buff)[new Date().getMinutes() % 10] % maxLen;
 }
+
+export function collapseText(x: string): string {
+    return x.replace(/\s/gm, '').toLowerCase();
+}

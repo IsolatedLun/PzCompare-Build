@@ -29,6 +29,11 @@
     white-space: nowrap;
 }
 
+// Links
+a[data-variant='link'] {
+    color: $clr-link;
+}
+
 // Misc
 *[data-sr] {
     font-size: 0px;

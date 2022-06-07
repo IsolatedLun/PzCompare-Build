@@ -1,9 +1,4 @@
-import { Props_Object } from "../components/modules/Table/types";
 import { DT_Diff, DT_Tuple, TupleDict } from "../types";
-
-export interface X {
-    [key: string]: number;
-}
 
 /**
  * @param x
@@ -30,17 +25,18 @@ export function comparator(objX: DT_Tuple<string, string>, objY: DT_Tuple<string
         return bothTupleDict;
     }
 
-    let xDiffs: X = {};
-    let yDiffs: X = {};
+    let xDiffs: DT_Diff = {};
+    let yDiffs: DT_Diff = {};
     const toCompare = balanceNumerics(objX, objY);
-    console.log(toCompare)
 
     Object.entries(toCompare).forEach(([key, [xVal, yVal]]) => {
-        // WIP
+        xVal = xVal === 0 ? 0.1 : xVal;
+        yVal = yVal === 0 ? 0.1 : yVal;
+
         if(xVal > yVal)
-            xDiffs[key] = 100
+            xDiffs[key] = Number(((xVal / yVal) * 100).toPrecision(2));
         else if (yVal > xVal)
-            yDiffs[key] = 100
+            yDiffs[key] = Number(((yVal / xVal) * 100).toPrecision(2));
     })
 
 

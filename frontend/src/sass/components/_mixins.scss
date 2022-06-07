@@ -3,8 +3,7 @@
 @mixin create-button (
     $padding: $default-button-spacing, 
     $bg: $clr-default-button, 
-    $bg-hover: 
-    $clr-default-button-hover
+    $clr-border: $clr-default-button-border
 ) {
 
     font-size: var(--fs-400);
@@ -13,13 +12,9 @@
     background-color: $bg;
 
     border: 2px solid;
-    border-color: $clr-default-button-border;
+    border-color: $clr-border;
 
     cursor: pointer;
-
-    &:is(:hover, :focus) {
-        background-color: $bg-hover;
-    }
 }
 
 @mixin create-input (

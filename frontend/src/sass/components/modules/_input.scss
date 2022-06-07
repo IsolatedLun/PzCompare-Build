@@ -2,7 +2,7 @@
 @use '../../abstracts/' as *;
 
 .input {
-    @include create-input($border-hover: pink);
+    @include create-input();
 
     &:is(:hover, :focus) {
         box-shadow: $shadow-default-input;

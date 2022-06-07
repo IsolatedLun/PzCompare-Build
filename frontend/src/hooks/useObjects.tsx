@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Props_Object } from "../components/modules/Table/types";
 import { Setter } from "../types";
 import { comparator } from "../utils/comparator";
+import { collapseText } from "../utils/funcs";
 
 export function useObjects(objects: any): 
 [
@@ -12,11 +13,15 @@ export function useObjects(objects: any):
 {
     function compareObjects() {
         if(xObjText.length > 0 && yObjText.length > 0) {
-          if(objects[xObjText] && objects[yObjText]) {
-            const [xDiffs, yDiffs] = comparator(objects[xObjText], objects[yObjText]);
+            const xText = collapseText(xObjText);
+            const yText = collapseText(yObjText);
 
-            setXObj({ object: objects[xObjText], diffs: xDiffs });
-            setYObj({ object: objects[yObjText], diffs: yDiffs });
+
+          if(objects[xText] && objects[yText]) {
+            const [xDiffs, yDiffs] = comparator(objects[xText], objects[yText]);
+
+            setXObj({ object: objects[xText], diffs: xDiffs });
+            setYObj({ object: objects[yText], diffs: yDiffs });
           }
         }
     }

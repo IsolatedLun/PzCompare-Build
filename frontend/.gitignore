@@ -15,6 +15,9 @@ dist-ssr
 *.css
 *.map
 
+# IMPORTANT
+MasterData.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

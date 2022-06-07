@@ -1,22 +1,27 @@
-import { useState } from "react";
 import { objGet } from "../../../utils/funcs";
+import TruncatedText from "../Text/TruncatedText";
 import ObjectTableHeader from "./ObjectTableHeader";
+import EvolvedRecipeRow from "./TableRows/EvolvedRecipeRow";
 import { Props_ObjectTable, Props_TableRow } from "./types";
 
 const TableRow = (props: Props_TableRow) => {
-  return (
-    <tr>
-      <td>{ props.keyName }</td>
-      <td className='[ dir-ltr ]'>
-        { props.value }
-      </td>
-      {
-        props.pct 
-        ? <td data-percent={props.pct !== null}>{ props.pct }%</td> 
-        : <td data-percent='-1'>-</td>
-      }
-    </tr>
-  )
+  if(props.keyName === 'EvolvedRecipe')
+    return <EvolvedRecipeRow { ...props } />
+    
+  else
+    return (
+      <tr>
+        <td className='[ dir-ltr ]'><TruncatedText text={props.keyName as any} maxLen={18} /></td>
+        <td className='[ dir-ltr ]'>
+          <TruncatedText text={props.value as any} maxLen={16} />
+        </td>
+        {
+          props.pct 
+          ? <td data-percent={props.pct !== null}>{ props.pct }%</td> 
+          : <td data-percent='-1'>-</td>
+        }
+      </tr>
+    )
 }
 
 const ObjectTable = (props: Props_ObjectTable) => {

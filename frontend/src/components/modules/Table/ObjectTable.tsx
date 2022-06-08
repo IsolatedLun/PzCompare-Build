@@ -30,7 +30,7 @@ const ObjectTable = (props: Props_ObjectTable) => {
       <div 
         id={`object-table-${props.idx}`} 
         className="[ flex-direction-column ] [ gap-2 width-100vw ]">
-        <ObjectTableHeader name={props.objectName} avgPct={0} />
+        <ObjectTableHeader name={props.objectName} avgPct={props.data.avgPct} />
 
         <table
           className='[ object-table ] [ text-center width-100vw ]' 

@@ -1,3 +1,4 @@
 commands
 *.txt
 pzParser/*.json
+frontend/src/MasterData.json

@@ -13,6 +13,8 @@ export interface Props_ObjectTable {
 export interface Props_Object {
     object: DT_Tuple<string, string | number>[];
     diffs: any;
+
+    avgPct: number;
 }
 
 export interface Props_TableRow {

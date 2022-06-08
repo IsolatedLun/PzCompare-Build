@@ -29,6 +29,11 @@ p {
     line-height: 1.3;
 }
 
+a {
+    text-decoration: none;
+    color: var(--clr-texr-400);
+}
+
 input,
 button {
     font-family: 'Poppins', sans-serif;

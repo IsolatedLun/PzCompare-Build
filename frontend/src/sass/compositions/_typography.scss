@@ -11,6 +11,8 @@
     padding: $after-content-spacing;
     background-color: $clr-after-content;
     border-radius: $after-content-border-radius;
+
+    white-space: nowrap;
 }
 
 .icon {
@@ -32,6 +34,7 @@
 // Links
 a[data-variant='link'] {
     color: $clr-link;
+    border-bottom: 2px solid $clr-link;
 }
 
 // Misc

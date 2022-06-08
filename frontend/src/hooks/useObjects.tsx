@@ -18,10 +18,10 @@ export function useObjects(objects: any):
 
 
           if(objects[xText] && objects[yText]) {
-            const [xDiffs, yDiffs] = comparator(objects[xText], objects[yText]);
+            const [xDiffs, yDiffs, xPct, yPct] = comparator(objects[xText], objects[yText]);
 
-            setXObj({ object: objects[xText], diffs: xDiffs });
-            setYObj({ object: objects[yText], diffs: yDiffs });
+            setXObj({ object: objects[xText], diffs: xDiffs, avgPct: xPct });
+            setYObj({ object: objects[yText], diffs: yDiffs, avgPct: yPct });
           }
         }
     }
@@ -31,12 +31,14 @@ export function useObjects(objects: any):
 
     const [xObj, setXObj] = useState<Props_Object>({
         object: [],
-        diffs: {}
+        diffs: {},
+        avgPct: 0
     });
     
     const [yObj, setYObj] = useState<Props_Object>({
         object: [],
-        diffs: {}
+        diffs: {},
+        avgPct: 0
     });
 
     return [

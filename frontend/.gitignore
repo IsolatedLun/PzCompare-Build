@@ -8,15 +8,13 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+src/MasterData.json
 commands
 dist
 dist-ssr
 *.local
 *.css
 *.map
-
-# IMPORTANT
-MasterData.json
 
 # Editor directories and files
 .vscode/*

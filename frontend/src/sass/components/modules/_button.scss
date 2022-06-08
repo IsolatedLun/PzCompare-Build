@@ -6,7 +6,18 @@
 
     &:is(:hover, :focus) {
         background-color: $clr-default-button-hover;
+
+        .icon {
+            font-size: var(--fs-400);
+        }
     }
+
+    .icon {
+        font-size: 0;
+        transition: font-size 95ms ease-in-out;
+    }
+    
+    
 }
 
 .button[data-variant='primary'] {
@@ -19,4 +30,19 @@
         background-color: var(--clr-primary-600);
         border-color: var(--clr-primary-600);
     }
+}
+
+.button[data-variant='button-link'] {
+    @include create-button(
+        $bg: var(--clr-primary-600),
+        $clr-border: var(--clr-primary-600)
+    );
+
+    &:is(:hover, :focus) {
+        filter: brightness(1.05);
+    }
+}
+
+.button[data-secondary-variant='tight'] {
+    padding: $button-default-tight-spacing;
 }

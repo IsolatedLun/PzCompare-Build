@@ -33,6 +33,39 @@ export function randomArrLen(maxLen: number): number {
     return crypto.getRandomValues(buff)[new Date().getMinutes() % 10] % maxLen;
 }
 
+/**
+ * @param x - String
+ * @returns 'Louna is my cat' => 'lounaismycat
+*/
 export function collapseText(x: string): string {
     return x.replace(/\s/gm, '').toLowerCase();
+}
+
+export function sum(pctArr: number[]): number {
+    try {
+        return pctArr.reduce((a, b) => a + b);
+    }
+
+    catch {
+        return 0;
+    }
+}
+
+/**
+ * @param num
+ * @param defValue
+ * @summary if the number == 0, then it returns the defValue else number
+*/
+export function zeroToDef(num: number, def: number): number {
+    if(num === 0)
+        return def;
+    return num;
+}
+
+/**
+ * @param num
+ * @summary Returns the rounded percise version of the number
+*/
+export function preciseDeci(num: number): number {
+    return Number(num.toPrecision(2));
 }

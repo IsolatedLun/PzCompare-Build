@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/layouts/Home/Home';
-import Navbar from './components/layouts/Navbar';
+import Dictionary from './components/views/DictionaryView/Dictionary';
+import Home from './components/views/HomeView/Home';
+import Navbar from './components/layouts/Navbar/Navbar';
 import MasterData from './MasterData.json';
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
           <Route 
             path=''
             element={<Home masterData={masterData} />}  />
+
+          <Route 
+            path='dictionary'
+            element={<Dictionary masterData={masterData} />}  />
 
         </Routes>
       </div>

@@ -1,0 +1,24 @@
+@use '../abstracts/' as *;
+
+// Borders
+.border-radius-100 {
+    border-radius: 100%;
+}
+
+.border-radius-100vw {
+    border-radius: 100vw;
+}
+
+.border-radius-cubed {
+    border-radius: $border-radius-cubed;
+}
+
+.border-radius-top-cubed {
+    border-top-left-radius: $border-radius-cubed;
+    border-top-right-radius: $border-radius-cubed;
+}
+
+.border-radius-bottom-cubed {
+    border-bottom-left-radius: $border-radius-cubed;
+    border-bottom-right-radius: $border-radius-cubed;
+}

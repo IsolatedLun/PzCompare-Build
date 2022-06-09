@@ -50,6 +50,14 @@ button {
     outline-offset: 4px;
 }
 
+details > summary {
+    list-style: none;
+}
+
+details > summary::marker {
+    display: none;
+}
+
 // Misc
 [class*='flex'] {
     display: flex;

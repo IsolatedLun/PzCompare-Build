@@ -5,8 +5,9 @@ import { Props_Home } from './types';
 import { useEffect, useState } from 'react';
 import { Props_Object } from '../../modules/Table/types';
 import { useObjects } from '../../../hooks/useObjects';
+import { Props_MasterData } from '../../../types';
 
-const Home = (props: Props_Home) => {
+const Home = (props: Props_MasterData) => {
   const { objects, names } = props.masterData;
   const [
     [xText, yText, xTextSetter, yTextSetter],

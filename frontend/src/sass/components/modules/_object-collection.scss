@@ -1,0 +1,23 @@
+@use '../../abstracts/' as *;
+
+.object-collection {
+    .category__line {
+        width: 100%;
+        height: 0.1em;
+        border-bottom: 4px dotted var(--clr-hover-400);
+    }
+
+    .collection__items {
+        background-color: $bg-collection-items;
+    }
+
+    .category__arrow {
+        transition: transform 95ms ease-in-out;
+    }
+
+    &:is([open])  {
+        .category__arrow {
+            transform: rotate(90deg);
+        }
+    }
+}

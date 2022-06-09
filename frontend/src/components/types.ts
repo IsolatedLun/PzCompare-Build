@@ -9,6 +9,17 @@ export interface Props_Variant {
     secondaryVariant?: string;
 }
 
+export interface Props_Children {
+    children: any;
+}
+
+export interface Props_Aria {
+    ariaLabel: string;
+}
+
+export interface Props_Element extends Props_Children, Props_CubeCSS, Props_Variant {  };
+export interface Props_AriaElement extends Props_Element, Props_Aria {  };
+
 export interface Props_Interactibe<E> extends Props_CubeCSS, Props_Variant {
     onInteract?: (e: E) => void;
 }

@@ -26,7 +26,7 @@ $clr-default-input-border-hover: var(--clr-input-border);
 $clr-default-button-border: var(--clr-hover-400);
 $default-input-spacing: 0.25em 0.6em;
 $default-input-radius: 8px;
-$shadow-default-input: 0 0 1px 3px var(--clr-input-shadow);
+$shadow-default-input: 0 0 0px 3px var(--clr-input-shadow);
 
 // Object Table
 $table-thead-spacing: 0.4em;
@@ -38,6 +38,9 @@ $clr-table-pct-green-text: var(--clr-table-green-text);
 $clr-table-pct-red: var(--clr-table-red);
 $clr-table-pct-red-text: var(--clr-table-red-text);
 
+// Dictionary
+$bg-collection-items: var(--clr-background-500);
+
 $table-thead-border-radius: 9px;
 
 // After content
@@ -45,3 +48,10 @@ $after-content-font-size: var(--fs-300);
 $clr-after-content: var(--clr-primary-600);
 $after-content-spacing: 0.25em 0.5em;
 $after-content-border-radius: 100vw;
+
+// Under border
+$clr-under-border: var(--clr-hover-400);
+$under-border-spacing: 0.25em;
+
+// Border radiuses
+$border-radius-cubed: 8px;

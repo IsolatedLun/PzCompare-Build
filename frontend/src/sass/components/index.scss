@@ -1,7 +1,12 @@
-@forward './layouts/navbar';
-@forward './modules/table';
 @forward './containers';
-@forward './modules/input';
+
+@forward './layouts/navbar';
 @forward './layouts/home';
+@forward './layouts/dictionary';
+
 @forward './modules/button';
+@forward './modules/input';
+@forward './modules/table';
+@forward './modules/object-collection';
+
 @forward './mixins';

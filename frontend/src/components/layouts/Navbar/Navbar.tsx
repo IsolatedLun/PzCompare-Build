@@ -1,12 +1,12 @@
 import React from 'react'
-import { ARROW_RIGHT } from '../../consts'
-import LinkButton from '../modules/Buttons/LinkButton'
+import { ARROW_RIGHT } from '../../../consts'
+import LinkButton from '../../modules/Buttons/LinkButton'
 
 const Navbar = () => {
   return (
     <nav 
         role='Primary navigation'
-        className='[ main-nav ] [ flex justify-content-space-between align-items-center ]  [ padding-2 ]'>
+        className='[ main-nav ] [ flex justify-content-space-between align-items-center ]  [ padding-1 ]'>
 
         <h1 className='[ after-content ]' data-after-text='Build 41.71'>
           PzCompare <span data-sr>Build 41.72</span>

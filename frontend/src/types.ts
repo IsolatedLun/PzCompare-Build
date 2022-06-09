@@ -1,6 +1,8 @@
 export interface Props_MasterData {
-    objects: any;
-    names: string[];
+    masterData: {
+        objects: any;
+        names: string[];
+    }
 }
 
 // Datatypes

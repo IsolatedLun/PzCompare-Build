@@ -69,3 +69,12 @@ export function zeroToDef(num: number, def: number): number {
 export function preciseDeci(num: number): number {
     return Number(num.toPrecision(2));
 }
+
+/**
+ * @param value
+ * @param types
+ * @summary like typeof() but for multiple types
+*/
+export function hasTypeof(val: any, conditions: string[]) {
+    return conditions.includes(typeof(val));
+}

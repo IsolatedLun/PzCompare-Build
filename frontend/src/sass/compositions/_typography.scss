@@ -31,6 +31,10 @@
     white-space: nowrap;
 }
 
+.under-border {
+    border-bottom: 1px solid $clr-under-border;
+}
+
 // Links
 a[data-variant='link'] {
     color: $clr-link;

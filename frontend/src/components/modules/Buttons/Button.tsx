@@ -8,7 +8,7 @@ const Button = (props: Props_Button<HTMLButtonElement>) => {
 
     return (
         <button 
-            className={createCubeCSSClass(props)}
+            className={createCubeCSSClass({ ...props, blockClass: 'button' })}
             data-variant={variant}
             data-secondary-variant={secondaryVariant}
             aria-label={propOrDefault(props.ariaLabel, 'Button')}

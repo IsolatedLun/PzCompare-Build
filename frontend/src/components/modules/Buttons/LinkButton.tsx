@@ -11,7 +11,7 @@ const LinkButton = (props: Props_LinkButton) => {
     <Link 
         to={props.to}
 
-        className={createCubeCSSClass(props)}
+        className={createCubeCSSClass({ ...props, blockClass: 'button' })}
         data-variant={variant}
         data-secondary-variant={secondaryVariant}
         aria-label={propOrDefault(props.ariaLabel, 'Button')}

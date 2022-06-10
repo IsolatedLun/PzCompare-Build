@@ -17,6 +17,10 @@
     cursor: pointer;
 }
 
+.select-none {
+    user-select: none;
+}
+
 // Directions
 .dir-ltr {
     direction: ltr;

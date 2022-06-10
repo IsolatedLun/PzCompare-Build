@@ -2,3 +2,5 @@ commands
 *.txt
 pzParser/*.json
 frontend/src/MasterData.json
+
+__pycache__

@@ -7,6 +7,7 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
   return (
     <div className="[ home-controls ] [ width-100vw flex-direction-column gap-2 ]">
         <TextInput 
+          type='string'
           value={props.xObjVal}
           onInteract={(e) => props.xObjSetter(e.currentTarget.value)}
           blockClass='input'
@@ -23,6 +24,7 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
         </Button>
         
         <TextInput 
+          type='string'
           value={props.yObjVal}
           onInteract={(e) => props.yObjSetter(e.currentTarget.value)}
           blockClass='input'

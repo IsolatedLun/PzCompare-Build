@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dictionary from './components/views/DictionaryView/Dictionary';
 import Home from './components/views/HomeView/Home';
 import Navbar from './components/layouts/Navbar/Navbar';
-import MasterData from './MasterData.json';
+import MasterData from './data/MasterData.json';
 
 function App() {
   const masterData = MasterData;

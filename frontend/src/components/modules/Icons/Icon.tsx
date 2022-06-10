@@ -8,7 +8,8 @@ const Icon = (props: Props_AriaElement) => {
         <span 
             aria-hidden
             aria-label={props.ariaLabel}
-            className={createCubeCSSClass({ ...props, compostClass: 'icon' })} data-variant={variant}>
+            className={createCubeCSSClass({ ...props, compostClass: 'icon', utilClass: 'select-none' })} 
+            data-variant={variant}>
             { props.children }
         </span>
     )

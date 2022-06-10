@@ -25,7 +25,7 @@ const TableRow = (props: Props_TableRow) => {
 }
 
 const ObjectTable = (props: Props_ObjectTable) => {
-  if(props.data && props.data.object.length > 0)
+  if(props.data && Object.keys(props.data.object).length > 0)
     return (
       <div 
         id={`object-table-${props.idx}`} 
@@ -42,10 +42,10 @@ const ObjectTable = (props: Props_ObjectTable) => {
             </thead>
             <tbody>
               {
-                Object.entries(props.data.object).map(([_, [key, val]]) => (
+                Object.keys(props.data.object).map((key) => (
                   <TableRow 
                     keyName={key} 
-                    value={val} 
+                    value={props.data.object[key]} 
                     pct={objGet(props.data.diffs, `x.${key}`, undefined)} />
                 ))
               }

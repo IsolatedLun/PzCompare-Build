@@ -1,4 +1,4 @@
-import { DT_Diff, DT_Tuple } from "../../../types";
+import { DT_Diff, DT_Object, DT_Tuple } from "../../../types";
 
 export interface Props_ObjectTable {
     direction: 'left' | 'right';
@@ -11,7 +11,7 @@ export interface Props_ObjectTable {
 }
 
 export interface Props_Object {
-    object: DT_Tuple<string, string | number>[];
+    object: DT_Object<string | number> | any;
     diffs: any;
 
     avgPct: number;

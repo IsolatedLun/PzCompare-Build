@@ -6,22 +6,26 @@ import { preciseDeci, sum, zeroToDef } from "./funcs";
  * @param y
  * @summary Compares 2 values with the same keys in the order of [x, y] respectively.
 */
-export function comparator(objX: DT_Tuple<string, string>, objY: DT_Tuple<string, string>): 
+export function comparator(objX: any, objY: any): 
     [DT_Diff, DT_Diff, number, number]
 {
     // Loops through the 2 objects and return the keys/attrs that both objects have. 
-    function balanceNumerics(x: DT_Tuple<string, string>, y: DT_Tuple<string, string>): TupleDict<number>
+    function balanceNumerics(): TupleDict<number>
     {
         let bothTupleDict: TupleDict<number> = {};
 
-        x.forEach(([key, val]) => {
-            if(Number.isFinite(Number(val)))
-            bothTupleDict[key] = [Number(val)] as any;
+        Object.keys(objX).forEach((key) => {
+            const val = Number(objX[key]);
+
+            if(Number.isFinite(val))
+                bothTupleDict[key] = [val] as any;
         })
 
-        y.forEach(([key, val]) => {
-            if(bothTupleDict[key])
-            bothTupleDict[key].push(Number(val))
+        Object.keys(objY).forEach((key) => {
+            const val = Number(objY[key]);
+            
+            if(Number.isFinite(val) && bothTupleDict[key])
+                bothTupleDict[key].push(val);
         })
 
         return bothTupleDict;
@@ -58,7 +62,6 @@ export function comparator(objX: DT_Tuple<string, string>, objY: DT_Tuple<string
         else if(ySum > xSum)
         _y = preciseDeci(ySum / (len));
 
-        console.log(xArr.length, yArr.length)
         return [_x, _y];
 }
 
@@ -67,7 +70,7 @@ export function comparator(objX: DT_Tuple<string, string>, objY: DT_Tuple<string
 
     let xAvgPct: number[] = [];
     let yAvgPct: number[] = [];
-    const toCompare = balanceNumerics(objX, objY);
+    const toCompare = balanceNumerics();
 
     let bothTupleDictLen = 0;
     Object.entries(toCompare).forEach(([key, [xVal, yVal]]) => {

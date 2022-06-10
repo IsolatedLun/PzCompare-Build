@@ -1,12 +1,20 @@
 export interface Props_MasterData {
     masterData: {
-        objects: any;
+        objects: DT_Object<any>;
         names: string[];
+
+        categories: DT_Object<any>;
+        misc: {
+            objectAmt: number;
+            categoryAmt: number;
+        }
+
     }
 }
 
 // Datatypes
 export type DT_Tuple<T, U> = [T, U];
+export type DT_Object<T> = string & { [key: string]: T }
 
 export type Setter<T> = React.Dispatch<React.SetStateAction<T>>;
 

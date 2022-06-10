@@ -11,6 +11,10 @@
         background-color: $bg-collection-items;
     }
 
+    .sub-collection__items {
+        background-color: $bg-sub-collection-items;
+    }
+
     .category__arrow {
         transition: transform 95ms ease-in-out;
     }

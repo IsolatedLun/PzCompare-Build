@@ -43,6 +43,13 @@
     }
 }
 
+.button[data-variant='neon'] {
+    @include create-button(
+        $bg: var(--clr-background-300),
+        $clr-border: var(--clr-primary-500)
+    );
+}
+
 .button[data-secondary-variant='tight'] {
     padding: $button-default-tight-spacing;
 }

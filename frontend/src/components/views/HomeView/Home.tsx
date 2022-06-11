@@ -15,6 +15,8 @@ const Home = (props: Props_MasterData) => {
     [xObj, yObj]
   ] = useObjects(objects);
 
+  const [showDiffs, setShowDiffs] = useState(false);
+
   return (
     <section 
       className="[ home ] [ grid ] [ width-100vw gap-3 margin-block-3 text-center ]" 
@@ -23,6 +25,7 @@ const Home = (props: Props_MasterData) => {
         <ObjectTable 
           randomName={names[randomArrLen(names.length)]}
           objectName={xText}
+          onlyShowDiffs={showDiffs}
           idx={1} 
           direction='left' 
           data={xObj} 
@@ -31,15 +34,19 @@ const Home = (props: Props_MasterData) => {
         <HomeMiddleSection 
           xObjVal={xText}
           yObjVal={yText}
+          showDiffs={showDiffs}
 
           xObjSetter={xTextSetter}
           yObjSetter={yTextSetter}
+
+          showDiffsSetter={setShowDiffs}
           compareFunction={compareObjs}
         />
 
         <ObjectTable 
           randomName={names[randomArrLen(names.length)]}
           objectName={yText}
+          onlyShowDiffs={showDiffs}
           idx={2} 
           direction='right' 
           data={yObj} 

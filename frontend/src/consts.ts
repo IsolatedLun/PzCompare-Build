@@ -4,3 +4,7 @@ export const CARET_UP = `\uf0d8`;
 export const ARROW_RIGHT = `\uf061`;
 
 export const PLUS_ICON = `\uf067`;
+export const CHECK_ICON = `\uf00c`;
+
+export const NEGATIVE_ATTRS = ['Weight', 'SwingTime', 'SoundRadius', 'JamGunChance', 'ReloadTime',
+'ReloadTime', 'AimingTime', 'RecoilDelay', 'MinimumSwingTime']

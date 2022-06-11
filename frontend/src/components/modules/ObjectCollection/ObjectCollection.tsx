@@ -50,13 +50,14 @@ const ObjectCollection = (props: Props_ObjectCollection) => {
                 utilClass='flex align-items-center padding-inline-2 padding-block-1 
                     pos-relative border-radius-top-cubed'
                 >
-                <h2 className='[ text-capital ]'>{ props.categoryName }</h2>
+                <h2 className='[ text-capital whitespace-nowrap ]'>{ props.categoryName }</h2>
                 <div className='[ category__line ] [ margin-inline-1 ]'></div>
                 <Icon ariaLabel='' blockClass='category__arrow'>{ ARROW_RIGHT }</Icon>
             </Card>
         </summary>
         
-        <div className="[ collection__items ] [ flex-direction-column ] [ gap-2 padding-2 border-radius-bottom-cubed ]">
+        <div className="[ collection__items ] [ flex-direction-column ] 
+            [ gap-2 padding-2 border-radius-bottom-cubed ]">
             {
                 Object.entries(props.subCategories).map(([key, val]) => 
                     <SubCollection 

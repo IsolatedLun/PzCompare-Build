@@ -5,7 +5,7 @@ export interface Props_CubeCSS {
 }
 
 export interface Props_Variant {
-    variant?: string;
+    variant?: string | number | boolean;
     secondaryVariant?: string;
 }
 

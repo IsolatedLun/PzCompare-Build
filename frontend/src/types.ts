@@ -7,6 +7,7 @@ export interface Props_MasterData {
         misc: {
             objectAmt: number;
             categoryAmt: number;
+            modAmt: number;
         }
 
     }

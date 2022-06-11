@@ -44,6 +44,10 @@
     border-bottom: 1px solid $clr-under-border;
 }
 
+h2.under-border {
+    padding-block-end: 0.25em;
+}
+
 // Links
 a[data-variant='link'] {
     color: $clr-link;
@@ -53,4 +57,8 @@ a[data-variant='link'] {
 // Misc
 *[data-sr] {
     font-size: 0px;
+}
+
+.whitespace-nowrap {
+    white-space: nowrap;
 }

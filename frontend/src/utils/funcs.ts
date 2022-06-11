@@ -78,3 +78,5 @@ export function preciseDeci(num: number): number {
 export function hasTypeof(val: any, conditions: string[]) {
     return conditions.includes(typeof(val));
 }
+
+export function x() {}

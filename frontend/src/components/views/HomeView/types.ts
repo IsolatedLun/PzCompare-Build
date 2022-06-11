@@ -7,8 +7,11 @@ export interface Props_Home {
 export interface Props_MiddleHome {
     xObjVal: string;
     yObjVal: string;
+    showDiffs: boolean;
 
     xObjSetter: Setter<string>;
     yObjSetter: Setter<string>;
+    showDiffsSetter: Setter<boolean>;
+
     compareFunction: Function;
 }

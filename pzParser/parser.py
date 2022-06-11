@@ -88,6 +88,7 @@ def bulk_parse(dir: str, output: str):
             "misc": {
                 "objectAmt": len(names),
                 "categoryAmt": len(categories),
+                "modAmt": sum([x != 'vanilla' for x in categories.keys()])
             }
         }
 

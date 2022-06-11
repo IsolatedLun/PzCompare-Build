@@ -8,3 +8,7 @@ export interface Props_Input<V> extends Props_Interactibe<React.FormEvent<HTMLIn
 
     onClearInput?: () => void;
 }
+
+export interface Props_CheckboxInput extends Props_Input<boolean> {
+    text: string;
+}

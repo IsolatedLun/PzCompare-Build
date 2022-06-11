@@ -1,3 +1,4 @@
+import { NEGATIVE_ATTRS } from "../consts";
 import { DT_Diff, DT_Tuple, TupleDict } from "../types";
 import { preciseDeci, sum, zeroToDef } from "./funcs";
 
@@ -39,7 +40,9 @@ export function comparator(objX: any, objY: any):
      * @summary Adds the percent value to it's corresponding array
     */
     function addPercent(key: string, a: number, b: number, arrName: string): void {
-        const num = preciseDeci((a / b) * 100);
+        const calc = preciseDeci((a / b) * 100);
+
+        const num = NEGATIVE_ATTRS.includes(key) ? -calc : calc;
 
         if(arrName === 'x') {
             xDiffs[key] = num;

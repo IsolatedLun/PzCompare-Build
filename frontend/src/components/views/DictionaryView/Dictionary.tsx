@@ -17,7 +17,7 @@ const Dictionary = (props: Props_MasterData) => {
             <header 
               className='[ dictionary-header ] [ flex gap-1 ] [ under-border padding-block-end-1 margin-block-end-2 ]'>
                 <Card utilClass='padding-1 border-radius-cubed'>
-                  0 <span className='fs-300'>Mods</span>
+                  { props.masterData.misc.modAmt } <span className='fs-300'>Mods</span>
                 </Card>
                 <Card utilClass='padding-1 border-radius-cubed'>
                 { props.masterData.misc.categoryAmt } <span className='fs-300'>Categories</span>

@@ -22,13 +22,12 @@
 
 .button[data-variant='primary'] {
     @include create-button(
-        $bg: var(--clr-primary-500),
-        $clr-border: var(--clr-primary-500)
+        $bg: var(--clr-primary-600),
+        $clr-border: var(--clr-primary-600)
     );
 
     &:is(:hover, :focus) {
-        background-color: var(--clr-primary-600);
-        border-color: var(--clr-primary-600);
+        filter: brightness(1.05);
     }
 }
 

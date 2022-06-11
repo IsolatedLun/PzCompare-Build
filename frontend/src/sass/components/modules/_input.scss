@@ -8,3 +8,14 @@
         box-shadow: $shadow-default-input;
     }
 }
+
+.input-checkbox {
+    .checkbox__icon {
+        border: 2px solid $clr-input-checkbox;
+        padding: $input-checkbox-spacing;
+    }
+
+    .checkbox__icon[data-variant='true'] {
+        background-color: $clr-input-checkbox;
+    }
+}

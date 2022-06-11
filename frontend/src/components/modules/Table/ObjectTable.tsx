@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { objGet } from "../../../utils/funcs";
 import TruncatedText from "../Text/TruncatedText";
 import ObjectTableHeader from "./ObjectTableHeader";
@@ -17,7 +18,7 @@ const TableRow = (props: Props_TableRow) => {
         </td>
         {
           props.pct 
-          ? <td data-percent={props.pct !== null}>{ props.pct }%</td> 
+          ? <td data-percent={props.pct > 0}>{ props.pct }%</td> 
           : <td data-percent='-1'>-</td>
         }
       </tr>
@@ -25,7 +26,13 @@ const TableRow = (props: Props_TableRow) => {
 }
 
 const ObjectTable = (props: Props_ObjectTable) => {
-  if(props.data && Object.keys(props.data.object).length > 0)
+  const [obj, setObj] = useState(props.data);
+
+  useEffect(() => {
+    setObj(props.data)
+  }, [props.data])
+
+  if(obj && Object.keys(obj.object).length > 0)
     return (
       <div 
         id={`object-table-${props.idx}`} 
@@ -42,12 +49,18 @@ const ObjectTable = (props: Props_ObjectTable) => {
             </thead>
             <tbody>
               {
-                Object.keys(props.data.object).map((key) => (
-                  <TableRow 
-                    keyName={key} 
-                    value={props.data.object[key]} 
-                    pct={objGet(props.data.diffs, `x.${key}`, undefined)} />
-                ))
+                Object.keys(obj.object).map((key) => {
+                  if(props.onlyShowDiffs && obj.diffs[key])
+                    return <TableRow 
+                            keyName={key} 
+                            value={props.data.object[key]} 
+                            pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+                  else if (!props.onlyShowDiffs)
+                    return <TableRow 
+                              keyName={key} 
+                              value={props.data.object[key]} 
+                              pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+                })
               }
             </tbody>
         </table>

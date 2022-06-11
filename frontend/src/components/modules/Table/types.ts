@@ -7,6 +7,8 @@ export interface Props_ObjectTable {
     
     idx: number;
 
+    onlyShowDiffs: boolean;
+
     data: Props_Object;
 }
 

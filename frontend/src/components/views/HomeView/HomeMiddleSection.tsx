@@ -35,7 +35,7 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
           <div>
             <h2 className='[ under-border ]'>Options</h2>
             <div className="[ controls__options ] [ margin-block-2 ]">
-              <CheckboxInput text='Show differences only'
+              <CheckboxInput text='Show differences'
                 type='boolean' 
                 value={props.showDiffs}
                 onInteract={() => props.showDiffsSetter(!props.showDiffs)} />

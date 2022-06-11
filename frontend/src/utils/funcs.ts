@@ -79,4 +79,19 @@ export function hasTypeof(val: any, conditions: string[]) {
     return conditions.includes(typeof(val));
 }
 
-export function x() {}
+/**
+ * @summary Recursively opens details by taking the id from data-parent-id of the current element
+ * The first id always comes from the item itself (<p>) and the other id's are for the detail elements (<details>).
+ * p -> details ?-> details ?-> ...
+*/
+export function openNestedDetails(itemId: string): any {
+    const el = document.getElementById(itemId) as HTMLElement;
+    const parentId = el.getAttribute('data-parent-id');
+
+    if(parentId) {
+        const detailEl = document.getElementById(parentId) as HTMLDetailsElement;
+
+        detailEl.open = true;
+        return openNestedDetails(parentId);
+    }
+}

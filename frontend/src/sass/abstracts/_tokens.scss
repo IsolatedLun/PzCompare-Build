@@ -33,6 +33,7 @@ $shadow-default-input: 0 0 0px 3px var(--clr-input-shadow);
 
 // Object Table
 $table-thead-spacing: 0.4em;
+$table-max-width: var(--max-width-table);
 
 $clr-table-thead: var(--clr-background-600);
 $clr-table-row: white;

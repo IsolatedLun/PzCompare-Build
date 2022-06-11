@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useId } from 'react'
 import { ARROW_RIGHT } from '../../../consts'
 import Card from '../Cards/Card'
 import Icon from '../Icons/Icon'
 import { Props_ObjectCollection, Props_SubCollection } from './types'
 
-const CollectionItem = ({ objName } : { objName: string }) => {
+const CollectionItem = ({ objName, subParentId } : { objName: string, subParentId: string }) => {
     return (
         <Card utilClass='padding-inline-2 padding-block-1 border-radius-cubed'>
-            { objName }
+            <p data-parent-id={subParentId} id={'object-' + objName}>{ objName }</p>
         </Card>
     )
 }
 
 const SubCollection = (props: Props_SubCollection) => {
+    const subDetailId = useId();
+
     return (
-        <details className='[ collection__sub ]'>
+        <details id={subDetailId} data-parent-id={props.parentId} className='[ collection__sub ]'>
             <summary className='[ sub__category ]' >
                 <Card 
                     variant='light'
@@ -35,7 +37,7 @@ const SubCollection = (props: Props_SubCollection) => {
             <div className="[ sub-collection__items ] [ flex-direction-column ] 
                 [ gap-1 padding-2 border-radius-bottom-cubed ]">
                 {
-                    props.objects.map(objName => <CollectionItem objName={objName} />)
+                    props.objects.map(objName => <CollectionItem subParentId={subDetailId} objName={objName} />)
                 }
             </div>
         </details>
@@ -43,30 +45,33 @@ const SubCollection = (props: Props_SubCollection) => {
 }
 
 const ObjectCollection = (props: Props_ObjectCollection) => {
-  return (
-    <details className='[ object-collection ]'>
-        <summary className='[ collection__category ]' >
-            <Card 
-                utilClass='flex align-items-center padding-inline-2 padding-block-1 
-                    pos-relative border-radius-top-cubed'
-                >
-                <h2 className='[ text-capital whitespace-nowrap ]'>{ props.categoryName }</h2>
-                <div className='[ category__line ] [ margin-inline-1 ]'></div>
-                <Icon ariaLabel='' blockClass='category__arrow'>{ ARROW_RIGHT }</Icon>
-            </Card>
-        </summary>
-        
-        <div className="[ collection__items ] [ flex-direction-column ] 
-            [ gap-2 padding-2 border-radius-bottom-cubed ]">
-            {
-                Object.entries(props.subCategories).map(([key, val]) => 
-                    <SubCollection 
-                        subCategoryName={key}
-                        objects={val as any} />)
-            }
-        </div>
-    </details>
-  )
+    const detailId = useId()
+
+    return (
+        <details id={detailId} className='[ object-collection ]'>
+            <summary className='[ collection__category ]' >
+                <Card 
+                    utilClass='flex align-items-center padding-inline-2 padding-block-1 
+                        pos-relative border-radius-top-cubed'
+                    >
+                    <h2 className='[ text-capital whitespace-nowrap ]'>{ props.categoryName }</h2>
+                    <div className='[ category__line ] [ margin-inline-1 ]'></div>
+                    <Icon ariaLabel='' blockClass='category__arrow'>{ ARROW_RIGHT }</Icon>
+                </Card>
+            </summary>
+            
+            <div className="[ collection__items ] [ flex-direction-column ] 
+                [ gap-2 padding-2 border-radius-bottom-cubed ]">
+                {
+                    Object.entries(props.subCategories).map(([key, val]) => 
+                        <SubCollection 
+                            subCategoryName={key}
+                            parentId={detailId}
+                            objects={val as any} />)
+                }
+            </div>
+        </details>
+    )
 }
 
 export default ObjectCollection

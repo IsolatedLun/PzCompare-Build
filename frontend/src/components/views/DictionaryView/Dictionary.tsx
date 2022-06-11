@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Props_MasterData } from '../../../types'
 import Card from '../../modules/Cards/Card'
 import ObjectCollection from '../../modules/ObjectCollection/ObjectCollection'
 import DictionarySearch from './DictionarySearch'
 
 const Dictionary = (props: Props_MasterData) => {
+  const [category, setCategory] = useState('');
+
   return (
     <section 
         className="[ dictionary-container ] [ grid gap-4 margin-block-1 ]" 

@@ -5,7 +5,16 @@ import { Props_Input } from './types'
 const TextInput = (props: Props_Input<string>) => {
   return (
     <div className='[ pos-relative ]'>
+      {
+        props.label && 
+          <label 
+            htmlFor={`${props.label}-${props.type}`}
+            className='[ display-block margin-block-end-1 ]'>
+            { props.label }
+          </label>
+      }
       <input 
+        id={`${props.label}-${props.type}`}
         onInput={(e) => props.onInteract ? props.onInteract(e) : null}
         placeholder={propOrDefault(props.placeholder, '')} 
         value={props.value}

@@ -4,9 +4,20 @@ import Home from './components/views/HomeView/Home';
 import Navbar from './components/layouts/Navbar/Navbar';
 import MasterData from './data/MasterData.json';
 import { Props_MasterData } from './types';
+import { useEffect } from 'react';
+import { openNestedDetails } from './utils/funcs';
 
 function App() {
   const masterData = MasterData as any;
+
+  useEffect(() => {
+    window.addEventListener('hashchange', (e) => {
+      const id = location.hash.substring(1);
+      
+      if(id)
+        openNestedDetails(id);
+    })
+  }, [])
 
   return (
     <Router>

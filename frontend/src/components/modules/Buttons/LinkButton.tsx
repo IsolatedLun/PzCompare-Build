@@ -4,7 +4,7 @@ import { createCubeCSSClass, propOrDefault } from '../../../utils/funcs'
 import { Props_LinkButton } from './types';
 
 const LinkButton = (props: Props_LinkButton) => {
-    const variant = propOrDefault<string>(props.variant, 'default');
+    const variant = propOrDefault<string>(props.variant as string, 'default');
     const secondaryVariant = propOrDefault<string>(props.secondaryVariant, 'default');
   
     return (

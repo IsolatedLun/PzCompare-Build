@@ -5,6 +5,7 @@ export interface Props_ObjectCollection {
 
 export interface Props_SubCollection {
     subCategoryName: string;
+    parentId: string;
     
     objects: string[];
 }

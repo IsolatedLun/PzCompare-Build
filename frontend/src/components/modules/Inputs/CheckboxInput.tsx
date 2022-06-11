@@ -8,7 +8,7 @@ const CheckboxInput = (props: Props_CheckboxInput) => {
   return (
     <button 
         className='[ input-checkbox ] [ card flex align-items-center gap-2 ] 
-            [ padding-inline-2 padding-block-1 border-radius-cubed margin-inline-auto  ]' 
+            [ padding-inline-2 padding-block-1 border-radius-cubed margin-inline-auto cursor-pointer ]' 
         onClick={(e: any) => props.onInteract ? props.onInteract(e) : null}>
 
         <Icon 

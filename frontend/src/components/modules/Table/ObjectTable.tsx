@@ -11,11 +11,9 @@ const TableRow = (props: Props_TableRow) => {
     
   else
     return (
-      <tr>
-        <td className='[ dir-ltr ]'><TruncatedText text={props.keyName as any} maxLen={18} /></td>
-        <td className='[ dir-ltr ]'>
-          <TruncatedText text={props.value as any} maxLen={16} />
-        </td>
+      <tr className="[ dir-ltr ]">
+        <td className="[ text-elliptic ]">{ props.keyName }</td>
+        <td className="[ text-elliptic ]">{ props.value }</td>
         {
           props.pct 
           ? <td data-percent={props.pct > 0}>{ props.pct }%</td> 

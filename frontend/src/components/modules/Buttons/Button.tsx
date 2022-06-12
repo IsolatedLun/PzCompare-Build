@@ -3,7 +3,7 @@ import { createCubeCSSClass, prepareProps } from '../../../utils/funcs'
 import { Props_Button } from './types';
 
 const Button = (props: Props_Button<HTMLButtonElement>) => {
-    const _props = prepareProps<Props_Button<HTMLButtonElement>>(props);
+    const _props = prepareProps(props);
 
     return (
         <button 

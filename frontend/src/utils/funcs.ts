@@ -106,15 +106,14 @@ export function openNestedDetails(itemId: string, targetId: string): any {
  * @param props 
  * @returns Defaulted props
  */
-export function prepareProps<T extends Props_AriaElement>(props: T): T {
+export function prepareProps<T extends Props_Element>(props: T, extraCls: Props_CubeCSS = {}): T {
     return {
         ...props,
         variant: propOrDefault<string>(props.variant as string, 'default'),
         secondaryVariant: propOrDefault<string>(props.secondaryVariant as string, 'default'),
-        blockClass: propOrDefault(props.blockClass, ''),
-        compostClass: propOrDefault(props.compostClass, ''),
-        utilClass: propOrDefault(props.utilClass, ''),
-        ariaLabel: propOrDefault(props.ariaLabel, 'Button'),
+        blockClass: propOrDefault(props.blockClass, '') + ' ' + propOrDefault(extraCls.blockClass, ''),
+        compostClass: propOrDefault(props.compostClass, '') + ' ' + propOrDefault(extraCls.compostClass, ''),
+        utilClass: propOrDefault(props.utilClass, '') + ' ' + propOrDefault(extraCls.utilClass, ''),
     }
 }
 

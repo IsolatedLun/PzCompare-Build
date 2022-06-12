@@ -42,11 +42,17 @@
 
 .under-border {
     border-bottom: 1px solid $clr-under-border;
+
+    &[data-parent-variant]:is(:last-of-type) {
+        border: 0;
+    }
 }
 
 h2.under-border {
     padding-block-end: 0.25em;
 }
+
+.under-border[data-parent-variant]
 
 // Links
 a[data-variant='link'] {

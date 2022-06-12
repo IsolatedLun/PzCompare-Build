@@ -1,11 +1,11 @@
-import { createCubeCSSClass, propOrDefault } from '../../../utils/funcs';
+import { createCubeCSSClass, prepareProps, propOrDefault } from '../../../utils/funcs';
 import { Props_Card } from './types';
 
 const Card = (props: Props_Card) => {
-    const variant = propOrDefault<string>(props.variant, 'default');
+    const _props = prepareProps(props, { compostClass: 'card' })
 
     return (
-        <div className={createCubeCSSClass({ ...props, compostClass: 'card' })} data-variant={variant}>
+        <div className={createCubeCSSClass({ ..._props })} data-variant={_props.variant}>
             { props.children }
         </div>
     )

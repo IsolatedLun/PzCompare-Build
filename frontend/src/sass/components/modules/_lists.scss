@@ -1,5 +1,18 @@
+@use '../../abstracts/' as *;
+
 .list[data-variant='primary'] {
     li::marker {
         color: var(--clr-primary-600);
+    }
+}
+
+.list[data-variant='dropdown'] {
+    max-width: 160px;
+    width: 100vw;
+
+    background-color: $clr-dropdown;
+
+    li {
+        list-style: none;
     }
 }

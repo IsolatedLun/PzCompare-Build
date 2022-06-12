@@ -15,7 +15,7 @@ function App() {
       const id = location.hash.substring(1);
       
       if(id)
-        openNestedDetails(id);
+        openNestedDetails(id, id);
     })
   }, [])
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Props_MasterData } from '../../../types'
+import { strSearch } from '../../../utils/funcs'
 import Card from '../../modules/Cards/Card'
 import ObjectCollection from '../../modules/ObjectCollection/ObjectCollection'
 import DictionarySearch from './DictionarySearch'
@@ -13,7 +14,7 @@ const Dictionary = (props: Props_MasterData) => {
         role='Dictionary section' 
         data-grid-collapse
         >
-        <DictionarySearch />
+        <DictionarySearch categoryValue={category} categorySetter={setCategory} />
 
         <div className='[ dictionary ]'>
             <header 
@@ -31,11 +32,17 @@ const Dictionary = (props: Props_MasterData) => {
 
             <div className="[ object-collections ] [ flex-direction-column ] [ gap-3 ]">
               {
-                Object.entries(props.masterData.categories).map(([key, val]) => 
-                  <ObjectCollection 
-                    categoryName={key}
-                    subCategories={val} />
-                    )
+                Object.entries(props.masterData.categories).map(([key, val]) => {
+                  if(category.length > 0 && strSearch(key, category))
+                    return <ObjectCollection 
+                              categoryName={key}
+                              subCategories={val} />
+                  else if(category.length === 0)
+                    return <ObjectCollection 
+                              categoryName={key}
+                              subCategories={val} />
+                })
+                  
               }
             </div>
         </div>

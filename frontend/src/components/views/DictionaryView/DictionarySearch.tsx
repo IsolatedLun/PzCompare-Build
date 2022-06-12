@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { openNestedDetails } from '../../../utils/funcs'
+import { collapseText, highlightElement, openNestedDetails } from '../../../utils/funcs'
 import LinkButton from '../../modules/Buttons/LinkButton'
 import TextInput from '../../modules/Inputs/TextInput'
+import { Props_DictionarySearch } from './types'
 
-const DictionarySearch = () => {
+const DictionarySearch = (props: Props_DictionarySearch) => {
   const [item, setItem] = useState('');
 
   return (
@@ -11,12 +12,12 @@ const DictionarySearch = () => {
         <TextInput 
             compostClass='input' 
             utilClass='width-100'
-            value='' 
+            value={props.categoryValue}
             label='Category'
             placeholder='Search category'
             type='string'
-            onClearInput={() => null}
-            onInteract={() => null} />
+            onClearInput={() => props.categorySetter('')}
+            onInteract={(e) => props.categorySetter(e.currentTarget.value)} />
 
         <TextInput 
             compostClass='input' 
@@ -25,14 +26,22 @@ const DictionarySearch = () => {
             label='Item'
             placeholder='Search item'
             type='string'
-            onClearInput={() => null}
+            onClearInput={() => setItem('')}
             onInteract={(e) => setItem(e.currentTarget.value)} />
 
         <a 
-          href={`#object-${item}`} 
+          href={`#object-${collapseText(item)}`} 
+          onClick={() => highlightElement(`object-${collapseText(item)}`, true)}
           data-secondary-variant='tight' 
           className='[ button ] [ border-radius-cubed margin-inline-auto margin-block-start-2 ]'
-          data-variant='primary'>Search</a>
+          data-variant='primary'
+          >
+            Search
+        </a>
+
+        <ul data-variant='primary' className='[ list ] [ margin-block-1 text-muted ]'>
+          <li>You can search items without a category</li>
+        </ul>
     </div>
   )
 }

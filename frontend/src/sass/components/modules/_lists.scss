@@ -1,0 +1,5 @@
+.list[data-variant='primary'] {
+    li::marker {
+        color: var(--clr-primary-600);
+    }
+}

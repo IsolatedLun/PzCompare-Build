@@ -1,0 +1,12 @@
+@use '../abstracts/' as *;
+
+.anim-highlight {
+    animation: animHighlight 250ms ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes animHighlight {
+    100% {
+        background-color: $clr-highlight;
+    }
+}

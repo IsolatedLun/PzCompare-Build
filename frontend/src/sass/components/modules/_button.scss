@@ -6,18 +6,7 @@
 
     &:is(:hover, :focus) {
         background-color: $clr-default-button-hover;
-
-        .icon {
-            font-size: var(--fs-400);
-        }
     }
-
-    .icon {
-        font-size: 0;
-        transition: font-size 95ms ease-in-out;
-    }
-    
-    
 }
 
 .button[data-variant='primary'] {

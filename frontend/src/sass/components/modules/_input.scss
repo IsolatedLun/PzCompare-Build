@@ -1,21 +1,33 @@
 @use '../mixins' as *;
 @use '../../abstracts/' as *;
 
-.input {
-    @include create-input();
-
-    &:is(:hover, :focus) {
-        box-shadow: $shadow-default-input;
+.input-container {
+    .input {
+        @include create-input();
+    
+        &:is(:hover, :focus) {
+            box-shadow: $shadow-default-input;
+        }
+    
     }
-}
-
-.input-checkbox {
-    .checkbox__icon {
-        border: 2px solid $clr-input-checkbox;
-        padding: $input-checkbox-spacing;
+    
+    .input-checkbox {
+        .checkbox__icon {
+            border: 2px solid $clr-input-checkbox;
+            padding: $input-checkbox-spacing;
+        }
+    
+        .checkbox__icon[data-variant='true'] {
+            background-color: $clr-input-checkbox;
+        }
     }
+    
+    .input__clear-button {
+        padding: 0.15em 0.25em;
+        background-color: var(--clr-background-500);
 
-    .checkbox__icon[data-variant='true'] {
-        background-color: $clr-input-checkbox;
+        top: 50%;
+        left: 90%;
+        transform: translate(-50%, -50%);
     }
 }

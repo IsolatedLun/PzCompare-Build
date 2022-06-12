@@ -1,4 +1,4 @@
-import { Props_CubeCSS } from "../components/types";
+import { Props_AriaElement, Props_CubeCSS, Props_Element } from "../components/types";
 
 /**
  * @param x - Object
@@ -84,7 +84,7 @@ export function hasTypeof(val: any, conditions: string[]) {
  * The first id always comes from the item itself (<p>) and the other id's are for the detail elements (<details>).
  * p -> details ?-> details ?-> ...
 */
-export function openNestedDetails(itemId: string): any {
+export function openNestedDetails(itemId: string, targetId: string): any {
     const el = document.getElementById(itemId) as HTMLElement;
     const parentId = el.getAttribute('data-parent-id');
 
@@ -92,6 +92,51 @@ export function openNestedDetails(itemId: string): any {
         const detailEl = document.getElementById(parentId) as HTMLDetailsElement;
 
         detailEl.open = true;
-        return openNestedDetails(parentId);
+        return openNestedDetails(parentId, targetId);
     }
+
+    else {
+        document.getElementById(targetId)?.scrollIntoView()
+    }
+
+}
+
+/**
+ * 
+ * @param props 
+ * @returns Defaulted props
+ */
+export function prepareProps<T extends Props_AriaElement>(props: T): T {
+    return {
+        ...props,
+        variant: propOrDefault<string>(props.variant as string, 'default'),
+        secondaryVariant: propOrDefault<string>(props.secondaryVariant as string, 'default'),
+        blockClass: propOrDefault(props.blockClass, ''),
+        compostClass: propOrDefault(props.compostClass, ''),
+        utilClass: propOrDefault(props.utilClass, ''),
+        ariaLabel: propOrDefault(props.ariaLabel, 'Button'),
+    }
+}
+
+/**
+ * 
+ * @param toSearch
+ * @param searchValue 
+ * @returns Basic search function
+ */
+export function strSearch(toSearch: string, x: string): boolean {
+    return toSearch.toLowerCase().indexOf(x) > -1;
+}
+
+export function highlightElement(id: string, targetParent: boolean) {
+    let el = document.getElementById(id) as HTMLElement;
+
+    if(targetParent)
+        el = el.parentElement ? el.parentElement : el;
+
+    if(el)
+        if(el?.classList.contains('anim-highlight'))
+            el.classList.remove('anim-highlight');
+
+        el?.classList.add('anim-highlight');
 }

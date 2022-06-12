@@ -1,5 +1,6 @@
 import React, { useId } from 'react'
 import { ARROW_RIGHT } from '../../../consts'
+import { collapseText } from '../../../utils/funcs'
 import Card from '../Cards/Card'
 import Icon from '../Icons/Icon'
 import { Props_ObjectCollection, Props_SubCollection } from './types'
@@ -7,7 +8,7 @@ import { Props_ObjectCollection, Props_SubCollection } from './types'
 const CollectionItem = ({ objName, subParentId } : { objName: string, subParentId: string }) => {
     return (
         <Card utilClass='padding-inline-2 padding-block-1 border-radius-cubed'>
-            <p data-parent-id={subParentId} id={'object-' + objName}>{ objName }</p>
+            <p data-parent-id={subParentId} id={'object-' + collapseText(objName)}>{ objName }</p>
         </Card>
     )
 }
@@ -45,7 +46,7 @@ const SubCollection = (props: Props_SubCollection) => {
 }
 
 const ObjectCollection = (props: Props_ObjectCollection) => {
-    const detailId = useId()
+    const detailId = useId();
 
     return (
         <details id={detailId} className='[ object-collection ]'>

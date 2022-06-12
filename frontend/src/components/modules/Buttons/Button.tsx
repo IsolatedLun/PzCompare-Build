@@ -1,18 +1,20 @@
 import React from 'react'
-import { createCubeCSSClass, propOrDefault } from '../../../utils/funcs'
+import { createCubeCSSClass, prepareProps } from '../../../utils/funcs'
 import { Props_Button } from './types';
 
 const Button = (props: Props_Button<HTMLButtonElement>) => {
-    const variant = propOrDefault<string>(props.variant, 'default');
-    const secondaryVariant = propOrDefault<string>(props.secondaryVariant, 'default');
+    const _props = prepareProps<Props_Button<HTMLButtonElement>>(props);
 
     return (
         <button 
-            className={createCubeCSSClass({ ...props, blockClass: 'button' })}
-            data-variant={variant}
-            data-secondary-variant={secondaryVariant}
-            aria-label={propOrDefault(props.ariaLabel, 'Button')}
+            className={createCubeCSSClass({ ..._props })}
+
+            data-variant={_props.variant}
+            data-secondary-variant={_props.secondaryVariant}
+
+            aria-label={_props.ariaLabel}
             aria-hidden={props.variant === 'icon'}
+            
             onClick={(e) => props.onInteract ? props.onInteract(e) : null}
             >
             { props.children }

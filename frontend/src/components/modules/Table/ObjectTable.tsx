@@ -30,7 +30,7 @@ const ObjectTable = (props: Props_ObjectTable) => {
     setObj(props.data)
   }, [props.data])
 
-  if(obj && Object.keys(obj.object).length > 0)
+  if(obj && obj.object !== undefined && Object.keys(obj.object).length > 0)
     return (
       <div 
         id={`object-table-${props.idx}`} 
@@ -67,7 +67,10 @@ const ObjectTable = (props: Props_ObjectTable) => {
   return (
     <div className="[ flex-direction-column gap-1 ]">
       <h2 data-desktop>No Object.</h2>
-      <p className="[ text-muted ]">Try searching something! ({ props.randomName })</p>
+      <p className="[ text-muted ]">
+        Try searching something! 
+        { props.randomName && `(${props.randomName})` }
+      </p>
     </div>
   )
 }

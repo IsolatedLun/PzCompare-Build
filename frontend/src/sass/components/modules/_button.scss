@@ -7,7 +7,18 @@
     &:is(:hover, :focus) {
         background-color: $clr-default-button-hover;
     }
+
+    &.has-link {
+        padding: 0 !important;
+    
+        > a {
+            display: inline-block;
+    
+            padding: $default-button-spacing;
+        }
+    }
 }
+
 
 .button[data-variant='primary'] {
     @include create-button(
@@ -38,6 +49,12 @@
     );
 }
 
-.button[data-secondary-variant='tight'] {
+.button[data-secondary-variant='tight'],
+.button.has-link > a {
     padding: $button-default-tight-spacing;
+}
+
+.button[data-work-condition='false'] {
+    opacity: 0.5;
+    pointer-events: none;
 }

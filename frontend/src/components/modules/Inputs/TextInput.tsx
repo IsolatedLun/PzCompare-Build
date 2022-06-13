@@ -21,8 +21,11 @@ const TextInput = (props: Props_Input<string>) => {
       <div className='[ container__inner ] [ pos-relative ]'>
         <input 
           id={`${_props.label}-${_props.type}`}
+          list={propOrDefault(_props.list, '')}
+
           onInput={(e) => _props.onInteract ? _props.onInteract(e) : null}
           placeholder={propOrDefault(_props.placeholder, '')} 
+
           value={_props.value}
           className={createCubeCSSClass({ ..._props })} type="text" 
         />

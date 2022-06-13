@@ -3,7 +3,7 @@ import { createCubeCSSClass, prepareProps } from '../../../utils/funcs'
 import { Props_Button } from './types';
 
 const Button = (props: Props_Button<HTMLButtonElement>) => {
-    const _props = prepareProps(props);
+    const _props = prepareProps(props, { compostClass: 'button' });
 
     return (
         <button 
@@ -11,6 +11,7 @@ const Button = (props: Props_Button<HTMLButtonElement>) => {
 
             data-variant={_props.variant}
             data-secondary-variant={_props.secondaryVariant}
+            data-work-condition={props.workCondition !== null ? props.workCondition : -1}
 
             aria-label={_props.ariaLabel}
             aria-hidden={props.variant === 'icon'}

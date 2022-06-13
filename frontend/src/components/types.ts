@@ -10,7 +10,7 @@ export interface Props_Variant {
 }
 
 export interface Props_Children {
-    children: any;
+    children?: any;
 }
 
 export interface Props_Aria {

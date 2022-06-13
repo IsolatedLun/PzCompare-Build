@@ -23,7 +23,9 @@
     }
     
     .input__clear-button {
-        padding: 0.15em 0.25em;
+        font-size: var(--fs-300);
+
+        padding: $input-button-clear-spacing;
         background-color: var(--clr-background-500);
 
         top: 50%;

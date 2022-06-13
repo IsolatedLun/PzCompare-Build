@@ -5,6 +5,7 @@ export interface Props_Input<V> extends Props_Interactibe<React.FormEvent<HTMLIn
     placeholder?: string;
     label?: string;
     type: string;
+    list?: string;
 
     value: V;
 

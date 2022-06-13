@@ -2,7 +2,7 @@ import { DT_Diff, DT_Object, DT_Tuple } from "../../../types";
 
 export interface Props_ObjectTable {
     direction: 'left' | 'right';
-    randomName: string;
+    randomName?: string;
     objectName: string;
     
     idx: number;

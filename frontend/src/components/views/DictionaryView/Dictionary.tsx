@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Props_MasterData } from '../../../types'
 import { strSearch } from '../../../utils/funcs'
 import Card from '../../modules/Cards/Card'
@@ -14,7 +14,11 @@ const Dictionary = (props: Props_MasterData) => {
         role='Dictionary section' 
         data-grid-collapse
         >
-        <DictionarySearch categoryValue={category} categorySetter={setCategory} />
+        <DictionarySearch 
+          objects={props.masterData.objects}
+
+          categoryValue={category} 
+          categorySetter={setCategory}  />
 
         <div className='[ dictionary ]'>
             <header 

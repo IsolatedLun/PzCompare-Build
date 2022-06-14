@@ -2,9 +2,19 @@
 The predecessor of (PzCompare)[https://pz-compare.herokuapp.com] comes with many improvements like...
 - Better visuals than AAA corporate sites.
 - It's actually useful and works.
-- Modular. (Using table codes made by others; Customizing the style of the website, adding mods)
+- Modular. (Customizing the style of the website, adding mods)
 
-## Technology used
+## Screenshots
+Home
+---
+<img src="./README_FILES/PzHome.png" width="1024"/>
+
+Dictionary
+---
+<img src="./README_FILES/PzDict.png" width="1024"/>
+
+
+### Technology used
 - (React)[https://reactjs.org/]
 - (TypeScript)[https://www.typescriptlang.org/]
 - (Django)[https://www.djangoproject.com/]

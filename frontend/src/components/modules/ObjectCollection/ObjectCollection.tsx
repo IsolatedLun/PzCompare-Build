@@ -30,7 +30,7 @@ const SubCollection = (props: Props_SubCollection) => {
                         pos-relative border-radius-top-cubed'
                     >
                     <h3 
-                        className='[ text-capital after-content ]' 
+                        className='[ text-capital after-content whitespace-nowrap ]' 
                         data-variant='pct-left'
                         data-after-text={props.objects.length}>
                         { props.subCategoryName }

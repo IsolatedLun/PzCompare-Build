@@ -5,6 +5,7 @@ $base-medium-fs-size: 0.8rem;
 $font-sizes-desktop: (
     '200': $base-fs-size * 0.5,
     '300': $base-fs-size * 0.75,
+    '350': $base-fs-size * 0.85,
     '400': $base-fs-size,
     '450': $base-fs-size * 1.05,
     '500': $base-fs-size * 1.25,
@@ -16,6 +17,7 @@ $font-sizes-desktop: (
 $font-sizes-mobile: (
     '200': $base-mobile-fs-size * 0.5,
     '300': $base-mobile-fs-size * 0.75,
+    '350': $base-mobile-fs-size * 0.85,
     '400': $base-mobile-fs-size,
     '450': $base-mobile-fs-size * 1.05,
     '500': $base-mobile-fs-size * 1.25,
@@ -27,6 +29,7 @@ $font-sizes-mobile: (
 $font-sizes-medium: (
     '200': $base-medium-fs-size * 0.5,
     '300': $base-medium-fs-size * 0.75,
+    '350': $base-medium-fs-size * 0.85,
     '400': $base-medium-fs-size,
     '450': $base-medium-fs-size * 1.05,
     '500': $base-medium-fs-size * 1.25,

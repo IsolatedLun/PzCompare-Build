@@ -1,6 +1,8 @@
 commands
 *.txt
 pzParser/*.json
+pzParser/toCombine
+pzParser/files
 frontend/src/MasterData.json
 
 __pycache__

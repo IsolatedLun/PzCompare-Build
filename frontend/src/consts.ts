@@ -7,5 +7,8 @@ export const PLUS_ICON = `\uf067`;
 export const CHECK_ICON = `\uf00c`;
 export const TIMES_ICON = `\uf00d`;
 
+export const YOUTUBE_ICON = `\uf167`;
+export const GITHUB_ICON = `\uf09b`;
+
 export const NEGATIVE_ATTRS = ['Weight', 'SwingTime', 'SoundRadius', 'JamGunChance', 'ReloadTime',
 'ReloadTime', 'AimingTime', 'RecoilDelay', 'MinimumSwingTime']

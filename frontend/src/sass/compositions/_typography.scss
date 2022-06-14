@@ -52,12 +52,17 @@ h2.under-border {
     padding-block-end: 0.25em;
 }
 
-.under-border[data-parent-variant]
-
 // Links
 a[data-variant='link'] {
-    color: $clr-link;
-    border-bottom: 2px solid $clr-link;
+    &:where(:not([data-custom-color])) {
+        color: $clr-link; 
+    }
+
+    border-bottom: 2px solid transparent;
+
+    &:is(:hover, :focus) {
+        border-color: currentColor;
+    }
 }
 
 // Misc

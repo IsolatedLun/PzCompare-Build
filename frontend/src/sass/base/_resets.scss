@@ -10,6 +10,14 @@ html {
     scroll-behavior: smooth;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100vh;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     font-size: var(--fs-400);
@@ -35,7 +43,7 @@ p {
 
 a {
     text-decoration: none;
-    color: var(--clr-texr-400);
+    color: var(--clr-text-400);
 }
 
 input,

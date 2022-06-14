@@ -11,7 +11,7 @@ Home
 
 Dictionary
 ---
-<img src="./README_FILES/PzDict.png" width="1024"/>
+<img src="./README_FILES/pzDict.png" width="1024"/>
 
 
 ### Technology used

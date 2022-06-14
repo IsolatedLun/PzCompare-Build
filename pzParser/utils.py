@@ -14,7 +14,7 @@ def combine_text_files_in_dir(out: str):
                 data += f.read()
     
     with open(out, 'w') as f:
-        f.write(data)
+        f.write(data);
 
 
 combine_text_files_in_dir('./out.txt')

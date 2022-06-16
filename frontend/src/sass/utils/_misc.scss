@@ -44,6 +44,10 @@
     position: absolute;
 }
 
+.hidden {
+    display: none;
+}
+
 // Colors
 .clr-patreon-400 {
     color: var(--clr-patreon-400);

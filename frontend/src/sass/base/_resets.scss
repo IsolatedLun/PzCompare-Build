@@ -8,6 +8,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 10rem;
 }
 
 #root {
@@ -57,9 +58,12 @@ button {
     background-color: transparent;
 }
 
-:focus {
+:focus,
+:target {
     outline: 2px solid var(--clr-text-400);
     outline-offset: 4px;
+
+    border-radius: inherit;
 }
 
 details > summary {

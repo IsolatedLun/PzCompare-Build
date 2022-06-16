@@ -9,6 +9,8 @@ export interface Props_Input<V> extends Props_Interactibe<React.FormEvent<HTMLIn
 
     value: V;
 
+    hideLabel?: boolean;
+
     onClearInput?: () => void;
 }
 

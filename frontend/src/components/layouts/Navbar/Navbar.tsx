@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ARROW_RIGHT } from '../../../consts'
 import LinkButton from '../../modules/Buttons/LinkButton'
+import Icon from '../../modules/Icons/Icon'
 
 const Navbar = () => {
   return (
@@ -21,7 +22,7 @@ const Navbar = () => {
           variant='primary'
           secondaryVariant='tight'
           to='/dictionary'>
-          Dictionary <span id='LOL' className="[ icon ] [ margin-inline-start-1 ]">{ ARROW_RIGHT }</span>
+          Dictionary <Icon ariaLabel='' utilClass='[ margin-inline-start-1 ]'>{ ARROW_RIGHT }</Icon>
         </LinkButton>
     </nav>
   )

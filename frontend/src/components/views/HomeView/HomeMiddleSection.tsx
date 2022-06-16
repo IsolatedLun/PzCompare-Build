@@ -12,6 +12,8 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
           type='string'
           list='object-list'
           value={props.xObjVal}
+          label='First object'
+          hideLabel={true}
           onInteract={(e) => props.xObjSetter(e.currentTarget.value)}
           blockClass='input'
           utilClass='width-100' />
@@ -30,6 +32,8 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
           type='string'
           list='object-list'
           value={props.yObjVal}
+          label='Second object'
+          hideLabel={true}
           onInteract={(e) => props.yObjSetter(e.currentTarget.value)}
           blockClass='input'
           utilClass='width-100' />

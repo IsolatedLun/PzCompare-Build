@@ -8,7 +8,9 @@ import { Props_ObjectCollection, Props_SubCollection } from './types'
 
 const CollectionItem = ({ objName, subParentId } : { objName: string, subParentId: string }) => {
     return (
-        <Card utilClass='padding-inline-2 padding-block-1 border-radius-cubed'>
+        <Card 
+            blockClass='collection__item' 
+            utilClass='padding-inline-2 padding-block-1 border-radius-cubed'>
             <Link to={`/view?name=${objName}`} 
                 data-parent-id={subParentId} 
                 id={'object-' + collapseText(objName)}>

@@ -26,7 +26,7 @@ $colors-dark: (
     ),
 
     link: (
-        '400': #2b59e3,
+        '400': hsl(212 100% 67%),
     ),
 
     patreon: (
@@ -52,8 +52,14 @@ $colors-dark: (
 
 $colors-light: (
     background: (
-        '400': white,
-        '500': white
+        '300': hsl(220 4% 5%),
+        '400': hsl(220 4% 9%),
+        '500': hsl(220 4% 14%),
+        '600': hsl(220 4% 18%),
+    ),
+
+    highlight: (
+        '400': hsl(14 94% 49% / 0.26),
     ),
 
     hover: (
@@ -61,7 +67,38 @@ $colors-light: (
     ),
     
     text: (
-        '400': black
+        '400': white,
+        'muted': hsl(0 0% 76%)
+    ),
+
+    primary: (
+        '400': hsl(219 76% 30%),
+        '500': hsl(219 76% 36%),
+        '600': hsl(219 76% 46%),
+    ),
+
+    link: (
+        '400': hsl(212 100% 67%),
+    ),
+
+    patreon: (
+        '400': #f96854,
+    ),
+    
+    secondary: (
+        '400': hsl(219 76% 60%),
+    ),
+
+    table: (
+        'green': rgba(7 208 30 / 0.26),
+        'green-text': rgba(7 208 30),
+        'red': rgba(201 0 10 / 0.26),
+        'red-text': hsl(0 100% 49%)
+    ),
+
+    input: (
+        'border': hsl(220 97% 35%),
+        'shadow': hsl(220 97% 45% / 0.36)
     )
 );
 

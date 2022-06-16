@@ -11,8 +11,9 @@ const TextInput = (props: Props_Input<string>) => {
   return (
     <div className='[ input-container ]'>
       {
-        props.label && 
+        props.label &&
           <label 
+            data-sr={propOrDefault(_props.hideLabel, false)}
             htmlFor={`${_props.label}-${_props.type}`}
             className='[ display-block margin-block-end-1 ]'>
             { _props.label }

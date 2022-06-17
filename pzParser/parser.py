@@ -2,6 +2,7 @@ import re
 import json
 from os import walk
 from utils import tuples_to_dict
+from datetime import datetime
 
 """
     Parses PZ text files that contain object data and converts it to JSON.
@@ -60,11 +61,12 @@ def file_parse(f_name: str, output: str, write_to_file: bool):
 def bulk_parse(dir: str, output: str):
     objects = {}
     categories = {}
+    unique_sub_categories = set()
 
     names = []
 
     with open(output, 'w') as main_file:
-        for _, dirname, f_names in walk(dir):
+        for _, _, f_names in walk(dir):
             for f_name in f_names:
                 print(f'Parsing {f_name}...')
 
@@ -75,8 +77,17 @@ def bulk_parse(dir: str, output: str):
 
                 # Required filename eg. {category}.{type}.{index}.txt
                 category, sub_category, *_ = f_name.split('.')
+                
+                # Automatically sorts/bundles items according to their type
+                # setdefault is used as to not override an existing sub_category
+                if sub_category == 'auto':
+                    for (key, val) in _data.items():
+                        categories.setdefault(category, {}) \
+                            .setdefault(val['Type'].lower(), []).append(key)
 
-                categories.setdefault(category, {})[sub_category] = _names
+                        unique_sub_categories.add(val['Type'].lower())
+                else:
+                    categories.setdefault(category, {}).setdefault(sub_category, []).extend(_names)
 
                 print(f'Finished parsing {f_name}...\n')
 
@@ -86,9 +97,11 @@ def bulk_parse(dir: str, output: str):
             "names": names,
             "categories": categories,
             "misc": {
-                "objectAmt": len(names),
-                "categoryAmt": len(categories),
-                "modAmt": sum([x != 'vanilla' for x in categories.keys()])
+                "Objects": len(names),
+                "Categories": len(categories),
+                "Sub Categories": len(unique_sub_categories),
+                "Mods": sum([x != 'vanilla' for x in categories.keys()]),
+                "Last Updated": ' '.join(str(datetime.now()).split(' ')[0:2]).split('.')[0]
             }
         }
 

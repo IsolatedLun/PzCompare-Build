@@ -86,17 +86,20 @@ export function hasTypeof(val: any, conditions: string[]) {
 */
 export function openNestedDetails(itemId: string, targetId: string): any {
     const el = document.getElementById(itemId) as HTMLElement;
-    const parentId = el.getAttribute('data-parent-id');
+    
+    if(el) {
+        const parentId = el.getAttribute('data-parent-id');
 
-    if(parentId) {
-        const detailEl = document.getElementById(parentId) as HTMLDetailsElement;
+        if(parentId) {
+            const detailEl = document.getElementById(parentId) as HTMLDetailsElement;
 
-        detailEl.open = true;
-        return openNestedDetails(parentId, targetId);
-    }
+            detailEl.open = true;
+            return openNestedDetails(parentId, targetId);
+        }
 
-    else {
-        document.getElementById(targetId)?.scrollIntoView()
+        else {
+            document.getElementById(targetId)?.scrollIntoView()
+        }
     }
 
 }

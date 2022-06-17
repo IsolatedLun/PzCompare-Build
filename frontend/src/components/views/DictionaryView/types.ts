@@ -7,3 +7,8 @@ export interface Props_DictionarySearch {
 
     categorySetter: Setter<string>;
 }
+
+export interface Props_DictionaryCard {
+    num: string | number;
+    text: string;
+}

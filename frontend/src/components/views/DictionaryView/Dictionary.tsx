@@ -4,6 +4,15 @@ import { strSearch } from '../../../utils/funcs'
 import Card from '../../modules/Cards/Card'
 import ObjectCollection from '../../modules/ObjectCollection/ObjectCollection'
 import DictionarySearch from './DictionarySearch'
+import { Props_DictionaryCard } from './types'
+
+const DictionaryCard = (props: Props_DictionaryCard) => {
+  return (
+    <Card utilClass='padding-1 border-radius-cubed'>
+      { props.num } <span className='fs-300'>{ props.text }</span>
+    </Card>
+  )
+}
 
 const Dictionary = (props: Props_MasterData) => {
   const [category, setCategory] = useState('');
@@ -22,16 +31,13 @@ const Dictionary = (props: Props_MasterData) => {
 
         <div className='[ dictionary ]'>
             <header 
-              className='[ dictionary-header ] [ flex gap-1 ] [ under-border padding-block-end-1 margin-block-end-2 ]'>
-                <Card utilClass='padding-1 border-radius-cubed'>
-                  { props.masterData.misc.modAmt } <span className='fs-300'>Mods</span>
-                </Card>
-                <Card utilClass='padding-1 border-radius-cubed'>
-                { props.masterData.misc.categoryAmt } <span className='fs-300'>Categories</span>
-                </Card>
-                <Card utilClass='padding-1 border-radius-cubed'>
-                 { props.masterData.misc.objectAmt } <span className='fs-300'>Items</span>
-                </Card>
+              className='[ dictionary-header ] [ flex-wrap gap-1 justify-content-center ] 
+                [ under-border padding-block-end-1 margin-block-end-2 ]'>
+                {
+                  Object.entries(props.masterData.misc).map(([key, val]) => (
+                    <DictionaryCard num={val} text={key} />
+                  ))
+                }
             </header>
 
             <div className="[ object-collections ] [ flex-direction-column ] [ gap-3 ]">

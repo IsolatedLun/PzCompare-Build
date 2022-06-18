@@ -17,8 +17,12 @@ const Footer = () => {
                 <Icon utilClass='fs-400' ariaLabel='Egg'>&#129370;</Icon>
             </p>
 
-            <Button secondaryVariant='tight' variant='coffee' utilClass='border-radius-cubed'>
-                <a href="https://www.buymeacoffee.com/isolated">
+            <Button 
+                secondaryVariant='tight' 
+                variant='coffee'
+                compostClass='has-link' 
+                utilClass='border-radius-cubed'>
+                <a href="https://www.buymeacoffee.com/isolated" target={'_blank'}>
                     Buy me a Coffee ☕
                 </a>
             </Button>

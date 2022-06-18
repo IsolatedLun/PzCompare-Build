@@ -14,7 +14,7 @@ Dictionary
 <img src="./README_FILES/pzDict.png" width="1024"/>
 
 
-### Technology used
+### Technologies used
 - (React)[https://reactjs.org/]
 - (TypeScript)[https://www.typescriptlang.org/]
 - (Django)[https://www.djangoproject.com/]

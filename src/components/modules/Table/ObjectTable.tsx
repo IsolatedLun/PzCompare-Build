@@ -12,8 +12,12 @@ const TableRow = (props: Props_TableRow) => {
   else
     return (
       <tr className="[ dir-ltr ]">
-        <td className="[ text-elliptic ]">{ props.keyName }</td>
-        <td className="[ text-elliptic ]">{ props.value }</td>
+        <td className="[ text-elliptic ]">
+          <abbr title={props.keyName as string}>{ props.keyName }</abbr>
+        </td>
+        <td className="[ text-elliptic ]">
+          <abbr title={props.value as string}>{ props.value }</abbr>
+        </td>
         {
           props.pct 
           ? <td data-percent={props.pct > 0}>{ props.pct }%</td> 

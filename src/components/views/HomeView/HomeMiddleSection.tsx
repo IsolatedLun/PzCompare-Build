@@ -46,6 +46,11 @@ const HomeMiddleSection = (props: Props_MiddleHome) => {
                 value={props.showDiffs}
                 onInteract={() => props.showDiffsSetter(!props.showDiffs)} />
             </div>
+
+            <div>
+              <h2 className='[ under-border ] [ margin-bottom-1 ]'>Misc</h2>
+              <p className='text-muted'>Hover over text to show it's full content</p>
+            </div>
           </div>
     </div>
   )

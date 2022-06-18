@@ -18,7 +18,9 @@ export interface Props_Aria {
 }
 
 export interface Props_Element extends Props_Children, Props_CubeCSS, Props_Variant {  };
-export interface Props_AriaElement extends Props_Element, Props_Aria {  };
+export interface Props_AriaElement extends Props_Element, Props_Aria { 
+    notUseDefaultCls?: boolean;
+ };
 
 export interface Props_Interactibe<E> extends Props_Element {
     onInteract?: (e: E) => void;

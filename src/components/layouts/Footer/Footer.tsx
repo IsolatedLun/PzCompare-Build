@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { GITHUB_ICON, YOUTUBE_ICON } from '../../../consts'
+import { GITHUB_ICON, GITHUB_ICON_CLASS, YOUTUBE_ICON, YOUTUBE_ICON_CLASS } from '../../../consts'
 import Button from '../../modules/Buttons/Button'
 import Icon from '../../modules/Icons/Icon'
 
@@ -45,12 +45,18 @@ const Footer = () => {
                 <a 
                     target='_blank'
                     href="https://www.youtube.com/channel/UCb3kc0iA0uucEOT9A25fUuA">
-                    <Icon compostClass='fab' ariaLabel='Youtube'>{ YOUTUBE_ICON }</Icon>
+                    <Icon 
+                        compostClass={`fab ${YOUTUBE_ICON_CLASS}`} 
+                        ariaLabel='Youtube' 
+                        notUseDefaultCls={true}></Icon>
                 </a>
                 <a 
                     target='_blank'
                     href="https://github.com/IsolatedLun/PzCompare-Build">
-                    <Icon compostClass='fab' ariaLabel='Github'>{ GITHUB_ICON }</Icon>
+                    <Icon 
+                        compostClass={`fab ${GITHUB_ICON_CLASS}`} 
+                        ariaLabel='Github' 
+                        notUseDefaultCls={true}></Icon>
                 </a>
             </div>
         </div>

@@ -12,3 +12,7 @@ export const GITHUB_ICON = `\uf09b`;
 
 export const NEGATIVE_ATTRS = ['Weight', 'SwingTime', 'SoundRadius', 'JamGunChance', 'ReloadTime',
 'ReloadTime', 'AimingTime', 'RecoilDelay', 'MinimumSwingTime']
+
+// Icon classes
+export const YOUTUBE_ICON_CLASS = 'fa-youtube';
+export const GITHUB_ICON_CLASS = 'fa-github';

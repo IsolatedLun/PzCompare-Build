@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { GITHUB_ICON, YOUTUBE_ICON } from '../../../consts'
+import Button from '../../modules/Buttons/Button'
 import Icon from '../../modules/Icons/Icon'
 
 const Footer = () => {
@@ -9,19 +10,25 @@ const Footer = () => {
         className='[ primary-footer ] [ flex align-items-center justify-content-space-between ] 
             [ padding-2 gap-2 ]'
         data-flex-collapse>
-        <div className='[ flex gap-1 align-items-center ]'>
+        <div className='[ flex gap-1 align-items-center ]' data-flex-collapse>
             <h2>PzCB</h2>
             <p className='[ text-muted ] [ fs-300 ]'>
                 © 2022 PzCompare | Build, Made with&nbsp;
                 <Icon utilClass='fs-400' ariaLabel='Egg'>&#129370;</Icon>
             </p>
+
+            <Button secondaryVariant='tight' variant='coffee' utilClass='border-radius-cubed'>
+                <a href="https://www.buymeacoffee.com/isolated">
+                    Buy me a Coffee ☕
+                </a>
+            </Button>
         </div>
 
         <div>
             <div className="[ footer__links ] [ flex gap-4 align-items-end ] [ fs-350 ]">
                 <Link data-variant='link' to={'/'}>Home</Link>
                 <Link data-variant='link' to={'/dictionary'}>Dictionary</Link>
-                <a data-variant='link' href={'mailto:isolunaj3@gmail.com'}>Request</a>
+                <a data-variant='link' href={'mailto:isolunaj3@gmail.com'}>Request / Contact</a>
                 <a 
                     data-variant='link' 
                     data-custom-color=''

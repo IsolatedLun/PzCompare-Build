@@ -127,7 +127,7 @@ export function prepareProps<T extends Props_Element>(props: T, extraCls: Props_
  * @returns Basic search function
  */
 export function strSearch(toSearch: string, x: string): boolean {
-    return toSearch.toLowerCase().indexOf(x) > -1;
+    return toSearch.toLowerCase().indexOf(x.toLowerCase()) > -1;
 }
 
 export function highlightElement(id: string, targetParent: boolean) {

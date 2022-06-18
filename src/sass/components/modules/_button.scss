@@ -49,6 +49,19 @@
     );
 }
 
+.button[data-variant='coffee'] {
+    @include create-button(
+        $bg: $clr-coffee-background,
+        $clr-border: $clr-coffee-400,
+    );
+
+    &:is(:hover, :focus) {
+        background-color: $clr-coffee-hover;
+    }
+
+    transition: background-color 95m ease-in-out;
+}
+
 .button[data-secondary-variant='tight'],
 .button.has-link > a {
     padding: $button-default-tight-spacing;

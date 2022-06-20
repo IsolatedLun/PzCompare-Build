@@ -34,7 +34,7 @@ export function randomArrLen(maxLen: number): number {
 }
 
 /**
- * @param x - String
+ * @param x
  * @returns 'Louna is my cat' => 'lounaismycat
 */
 export function collapseText(x: string): string {
@@ -53,7 +53,7 @@ export function sum(pctArr: number[]): number {
 
 /**
  * @param num
- * @param defValue
+ * @param def
  * @summary if the number == 0, then it returns the defValue else number
 */
 export function zeroToDef(num: number, def: number): number {
@@ -71,8 +71,8 @@ export function preciseDeci(num: number): number {
 }
 
 /**
- * @param value
- * @param types
+ * @param val
+ * @param conditions
  * @summary like typeof() but for multiple types
 */
 export function hasTypeof(val: any, conditions: string[]) {
@@ -123,7 +123,7 @@ export function prepareProps<T extends Props_Element>(props: T, extraCls: Props_
 /**
  * 
  * @param toSearch
- * @param searchValue 
+ * @param x 
  * @returns Basic search function
  */
 export function strSearch(toSearch: string, x: string): boolean {

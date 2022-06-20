@@ -12,11 +12,11 @@ const TableRow = (props: Props_TableRow) => {
   else
     return (
       <tr className="[ dir-ltr ]">
-        <td className="[ text-elliptic ]">
-          <abbr title={props.keyName as string}>{ props.keyName }</abbr>
+        <td className="[ text-elliptic ]" title={props.keyName as string}>
+          { props.keyName }
         </td>
-        <td className="[ text-elliptic ]">
-          <abbr title={props.value as string}>{ props.value }</abbr>
+        <td className="[ text-elliptic ]" title={props.value as string}>
+          { props.value }
         </td>
         {
           props.pct 

@@ -90,6 +90,12 @@ $colors-light: (
     patreon: (
         '400': #f96854,
     ),
+
+    coffee: (
+        '400': hsl(15 100% 58%),
+        'less-opaque': hsl(15 100% 58% / 0.26),
+        'more-opaque': hsl(15 100% 58% / 0.62),
+    ),
     
     secondary: (
         '400': hsl(219 76% 60%),
@@ -108,4 +114,4 @@ $colors-light: (
     )
 );
 
-$active-theme: $colors-light;
+$active-theme: $colors-dark;

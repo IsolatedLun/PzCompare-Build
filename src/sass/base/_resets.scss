@@ -42,12 +42,13 @@ p {
     line-height: 1.3;
 }
 
-a,
-abbr {
+a {
     text-decoration: none;
     color: var(--clr-text-400);
+}
 
-    cursor: pointer;
+td[title] {
+    cursor: crosshair;
 }
 
 input,

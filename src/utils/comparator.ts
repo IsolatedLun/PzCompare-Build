@@ -3,8 +3,8 @@ import { DT_Diff, DT_Tuple, TupleDict } from "../types";
 import { preciseDeci, sum, zeroToDef } from "./funcs";
 
 /**
- * @param x
- * @param y
+ * @param objX
+ * @param objY
  * @summary Compares 2 values with the same keys in the order of [x, y] respectively.
 */
 export function comparator(objX: any, objY: any): 
@@ -34,8 +34,8 @@ export function comparator(objX: any, objY: any):
 
     /**
      * @param key
-     * @param aVal
-     * @param bVal
+     * @param a
+     * @param b
      * @param arrName - x || y
      * @summary Adds the percent value to it's corresponding array
     */

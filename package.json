@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "start": "vite",
-    "postcss-run": "postcss ./public/index.css --dir public --watch"
+    "postcss-run": "postcss ./css/index.css -o ./css/__index.css --watch"
   },
 
   "dependencies": {

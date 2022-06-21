@@ -37,6 +37,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
             variant='primary'
             secondaryVariant='tight'
             utilClass='border-radius-cubed'
+            target={'_self'}
             to={`#object-${collapseText(item)}`}>
             Search
           </AnchorButton>
@@ -44,6 +45,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
             secondaryVariant='tight'
             utilClass='border-radius-cubed'
             variant='primary'
+            target={'_self'}
             workCondition={props.objects[collapseText(item)] !== undefined}
             to={`/view?name=${item}`}>
             View Item

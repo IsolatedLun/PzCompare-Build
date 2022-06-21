@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { createCubeCSSClass, prepareProps, propOrDefault } from '../../../utils/funcs'
 import { Props_LinkButton } from './types';
 
-const LinkButton = (props: Props_LinkButton) => {
-    const _props = prepareProps(props, { blockClass: 'button' })
+const AnchorButton = (props: Props_LinkButton) => {
+    const _props = prepareProps(props, { compostClass: 'button' })
   
     return (
-    <Link 
-        to={props.to}
+    <a 
+        href={props.to}
 
-        className={createCubeCSSClass({ ..._props})}
+        className={createCubeCSSClass({ ..._props })}
 
         data-variant={_props.variant}
         data-secondary-variant={_props.secondaryVariant}
@@ -23,8 +23,8 @@ const LinkButton = (props: Props_LinkButton) => {
         onClick={(e) => _props.onInteract ? _props.onInteract(e) : null}
         >
         { _props.children }
-    </Link>
+    </a>
   )
 }
 
-export default LinkButton
+export default AnchorButton

@@ -1,4 +1,3 @@
-import React from 'react'
 import { TIMES_ICON } from '../../../consts'
 import { createCubeCSSClass, hasTypeof, prepareProps, propOrDefault } from '../../../utils/funcs'
 import Button from '../Buttons/Button'

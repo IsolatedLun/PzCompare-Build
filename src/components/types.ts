@@ -1,3 +1,5 @@
+import React, { HTMLAttributes, ReactChildren } from "react";
+
 export interface Props_CubeCSS {
     blockClass?: string;
     compostClass?: string;
@@ -10,7 +12,7 @@ export interface Props_Variant {
 }
 
 export interface Props_Children {
-    children?: any;
+    children?: React.ReactNode;
 }
 
 export interface Props_Aria {

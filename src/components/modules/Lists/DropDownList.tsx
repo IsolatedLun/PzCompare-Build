@@ -1,4 +1,3 @@
-import React from 'react'
 import { createCubeCSSClass, prepareProps } from '../../../utils/funcs'
 import { Props_DropdownList } from './types'
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { CHECK_ICON } from '../../../consts'
-import { createCubeCSSClass } from '../../../utils/funcs'
-import { Props_CheckboxInput, Props_Input } from './types'
+import { Props_CheckboxInput } from './types'
 import Icon from '../Icons/Icon';
 
 const CheckboxInput = (props: Props_CheckboxInput) => {

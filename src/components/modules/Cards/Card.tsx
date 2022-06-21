@@ -1,4 +1,4 @@
-import { createCubeCSSClass, prepareProps, propOrDefault } from '../../../utils/funcs';
+import { createCubeCSSClass, prepareProps } from '../../../utils/funcs';
 import { Props_Card } from './types';
 
 const Card = (props: Props_Card) => {

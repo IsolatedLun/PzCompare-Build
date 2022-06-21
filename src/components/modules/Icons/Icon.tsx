@@ -1,8 +1,8 @@
 import { createCubeCSSClass, prepareProps, propOrDefault } from '../../../utils/funcs';
-import { Props_AriaElement, Props_Element } from '../../types'
+import { Props_Icon } from './types';
 
-const Icon = (props: Props_AriaElement) => {
-    const _props = prepareProps<Props_AriaElement>(props, { 
+const Icon = (props: Props_Icon) => {
+    const _props = prepareProps<Props_Icon>(props, { 
         compostClass: !props.notUseDefaultCls ? 'icon' : '', utilClass: 'select-none' 
     });
 
@@ -10,6 +10,7 @@ const Icon = (props: Props_AriaElement) => {
         <span 
             aria-hidden
             aria-label={_props.ariaLabel}
+            data-custom-weight={propOrDefault(_props.isCustomWeight, false)}
 
             className={createCubeCSSClass({ ..._props })} 
 

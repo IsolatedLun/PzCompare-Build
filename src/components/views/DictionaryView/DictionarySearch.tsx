@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { collapseText, highlightElement, openNestedDetails } from '../../../utils/funcs'
+import AnchorButton from '../../modules/Buttons/AnchorButton'
 import Button from '../../modules/Buttons/Button'
 import LinkButton from '../../modules/Buttons/LinkButton'
 import TextInput from '../../modules/Inputs/TextInput'
@@ -32,13 +33,13 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
             onInteract={(e) => setItem(e.currentTarget.value)} />
 
         <div className='[ flex justify-content-space-between margin-block-start-2 ]'>
-          <Button 
-            utilClass='border-radius-cubed'
-            compostClass='has-link'
+          <AnchorButton 
+            variant='primary'
             secondaryVariant='tight'
-            variant='primary'>
-            <a href={`#object-${collapseText(item)}`}>Search</a>
-          </Button>
+            utilClass='border-radius-cubed'
+            to={`#object-${collapseText(item)}`}>
+            Search
+          </AnchorButton>
           <LinkButton
             secondaryVariant='tight'
             utilClass='border-radius-cubed'

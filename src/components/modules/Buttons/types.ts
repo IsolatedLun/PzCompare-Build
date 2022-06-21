@@ -5,6 +5,8 @@ export interface Props_Button<E> extends Props_Interactibe<React.FormEvent<E>> {
     children: any;
     ariaLabel?: string;
 
+    target?: string;
+
     workCondition?: boolean;
 }
 

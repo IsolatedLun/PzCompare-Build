@@ -38,8 +38,16 @@ $font-sizes-medium: (
     '800': $base-medium-fs-size * 2 
 );
 
+$font-weights: 100, 200, 400, 500, 600, 700, 800, 900, bold, normal, bolder, lighter, light;
+
 @each $fs, $val in $font-sizes-desktop {
     .fs-#{$fs} {
         font-size: var(--fs-#{$fs});
+    }
+}
+
+@each $type in $font-weights {
+    .fw-#{$type} {
+        font-weight: #{$type};
     }
 }

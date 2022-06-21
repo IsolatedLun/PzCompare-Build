@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { GITHUB_ICON, GITHUB_ICON_CLASS, YOUTUBE_ICON, YOUTUBE_ICON_CLASS } from '../../../consts'
+import AnchorButton from '../../modules/Buttons/AnchorButton'
 import Button from '../../modules/Buttons/Button'
 import Icon from '../../modules/Icons/Icon'
 
@@ -13,19 +14,17 @@ const Footer = () => {
         <div className='[ flex gap-1 align-items-center ]' data-flex-collapse>
             <h2>PzCB</h2>
             <p className='[ text-muted ] [ fs-300 ]'>
-                © 2022 PzCompare | Build, Made with&nbsp;
+                © 2022 PzCompare | Build, Made with &nbsp;
                 <Icon utilClass='fs-400' ariaLabel='Egg'>&#129370;</Icon>
             </p>
-
-            <Button 
-                secondaryVariant='tight' 
+            <AnchorButton 
+                utilClass='border-radius-cubed'
                 variant='coffee'
-                compostClass='has-link' 
-                utilClass='border-radius-cubed'>
-                <a href="https://www.buymeacoffee.com/isolated" target={'_blank'}>
-                    Buy me a Coffee ☕
-                </a>
-            </Button>
+                secondaryVariant='tight'
+                to="https://www.buymeacoffee.com/isolated">
+                Buy me a Coffee 
+                <Icon utilClass='fw-500' ariaLabel='Coffee' isCustomWeight>☕</Icon>
+            </AnchorButton>
         </div>
 
         <div>

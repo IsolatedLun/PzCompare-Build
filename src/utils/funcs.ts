@@ -173,3 +173,11 @@ export function toggleDropdowns<T extends Event>(e: T, whitelist: string) {
         dropdowns.forEach(el => el.setAttribute('data-dropdown-state', 'false'));
     }
 }
+
+export function humanizeText(x: string): string {
+    function capitalize(y: string) {
+        return y[0].toUpperCase() + y.substring(1);
+    }
+
+    return x.split('_').map(z => capitalize(z)).join(' ')
+}

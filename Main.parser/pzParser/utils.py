@@ -16,5 +16,7 @@ def combine_text_files_in_dir(out: str):
     with open(out, 'w') as f:
         f.write(data);
 
+def humanize_text(x: str):
+    return ' '.join([x.capitalize() for x in x.split('_')])
 
 combine_text_files_in_dir('./out.txt')

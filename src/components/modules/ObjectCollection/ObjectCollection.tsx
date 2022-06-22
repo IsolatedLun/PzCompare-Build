@@ -1,20 +1,20 @@
-import React, { useId } from 'react'
+import { useId } from 'react'
 import { Link } from 'react-router-dom'
 import { ARROW_RIGHT } from '../../../consts'
 import { collapseText } from '../../../utils/funcs'
 import Card from '../Cards/Card'
 import Icon from '../Icons/Icon'
-import { Props_ObjectCollection, Props_SubCollection } from './types'
+import { Props_ObjectCollection, Props_SubCollection, Props_SubCollectionItem } from './types'
 
-const CollectionItem = ({ objName, subParentId } : { objName: string, subParentId: string }) => {
+const CollectionItem = (props: Props_SubCollectionItem) => {
     return (
         <Card 
             blockClass='collection__item' 
             utilClass='padding-inline-2 padding-block-1 border-radius-cubed'>
-            <Link to={`/view?name=${objName}`} 
-                data-parent-id={subParentId} 
-                id={'object-' + collapseText(objName)}>
-                { objName }
+            <Link to={`/view?name=${props.x}`} 
+                data-parent-id={props.subParentId} 
+                id={'object-' + collapseText(props.x)}>
+                { props.z }
             </Link>
         </Card>
     )
@@ -45,7 +45,9 @@ const SubCollection = (props: Props_SubCollection) => {
             <div className="[ sub-collection__items ] [ flex-direction-column ] 
                 [ gap-1 padding-2 border-radius-bottom-cubed ]">
                 {
-                    props.objects.map(objName => <CollectionItem subParentId={subDetailId} objName={objName} />)
+                    props.objects.map(data => <CollectionItem
+                            { ...{...data, subParentId: subDetailId} } />
+                        )
                 }
             </div>
         </details>

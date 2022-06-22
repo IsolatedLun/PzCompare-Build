@@ -1,7 +1,7 @@
 import re
 import json
 from os import walk
-from utils import tuples_to_dict
+from utils import tuples_to_dict, humanize_text
 from datetime import datetime
 
 """
@@ -83,11 +83,15 @@ def bulk_parse(dir: str, output: str):
                 if sub_category == 'auto':
                     for (key, val) in _data.items():
                         categories.setdefault(category, {}) \
-                            .setdefault(val['Type'].lower(), []).append(key)
+                            .setdefault(val['Type'].lower(), []).append(
+                                { 'x': key, 'z': humanize_text(key) }
+                            )
 
                         unique_sub_categories.add(val['Type'].lower())
                 else:
-                    categories.setdefault(category, {}).setdefault(sub_category, []).extend(_names)
+                    categories.setdefault(category, {}) \
+                        .setdefault(sub_category, []) \
+                        .extend([{ 'x': x, 'z': humanize_text(x) } for x in _names])
 
                 print(f'Finished parsing {f_name}...\n')
 
@@ -95,7 +99,10 @@ def bulk_parse(dir: str, output: str):
         _dict = {
             "objects": objects,
             "names": names,
+            
+            # after subCategory: [{ x: lol_meow, z: Lol Meow }, ...]
             "categories": categories,
+
             "misc": {
                 "Objects": len(names),
                 "Categories": len(categories),

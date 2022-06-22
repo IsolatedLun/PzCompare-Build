@@ -5,7 +5,7 @@ import Navbar from './components/layouts/Navbar/Navbar';
 import MasterData from './data/MasterData.json';
 import { Props_MasterData } from './types';
 import { useEffect } from 'react';
-import { openNestedDetails } from './utils/funcs';
+import { openNestedDetails, toggleDropdowns } from './utils/funcs';
 import ObjectView from './components/views/ObjectView/ObjectView';
 import Datalist from './components/modules/Datalist/Datalist';
 import Footer from './components/layouts/Footer/Footer';
@@ -19,6 +19,14 @@ function App() {
       
       if(id)
         openNestedDetails(id, id);
+    })
+
+    window.addEventListener('touchstart', (e) => {
+      toggleDropdowns(e, 'dropdown-button')
+    })
+
+    window.addEventListener('mousedown', (e) => {
+      toggleDropdowns(e, 'dropdown-button')
     })
   }, [])
 

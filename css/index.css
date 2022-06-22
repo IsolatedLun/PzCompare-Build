@@ -1296,6 +1296,16 @@ details > summary::marker {
   display: grid;
 }
 
+*[data-hide=true],
+*[data-dropdown-state=true] {
+  display: block;
+}
+
+*[data-hide=false],
+*[data-dropdown-state=false] {
+  display: none;
+}
+
 @media screen and (max-width: 65em) {
   :root {
     --fs-200: 0.4rem;

@@ -9,7 +9,11 @@ const DropDownList = (props: Props_DropdownList) => {
         });
 
   return (
-    <ul className={createCubeCSSClass(_props)} data-variant={_props.variant}>
+    <ul 
+        id={props.id}
+        className={createCubeCSSClass(_props)} 
+        data-variant={_props.variant} 
+        data-dropdown-state={false}>
         {
             props.children
         }

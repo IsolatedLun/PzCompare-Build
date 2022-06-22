@@ -1,3 +1,4 @@
+import React from "react";
 import { Props_AriaElement, Props_CubeCSS, Props_Element } from "../components/types";
 
 /**
@@ -117,6 +118,7 @@ export function prepareProps<T extends Props_Element>(props: T, extraCls: Props_
         blockClass: propOrDefault(props.blockClass, '') + ' ' + propOrDefault(extraCls.blockClass, ''),
         compostClass: propOrDefault(props.compostClass, '') + ' ' + propOrDefault(extraCls.compostClass, ''),
         utilClass: propOrDefault(props.utilClass, '') + ' ' + propOrDefault(extraCls.utilClass, ''),
+        id: propOrDefault(props.id, '')
     }
 }
 
@@ -141,4 +143,33 @@ export function highlightElement(id: string, targetParent: boolean) {
             el.classList.remove('anim-highlight');
 
         el?.classList.add('anim-highlight');
+}
+
+/**
+ * @param id
+*/
+export function toggleTargetDropdown(id: string) {
+    const el = document.getElementById(id) as HTMLElement;
+    const attr = el.getAttribute('data-dropdown-state')
+
+    if(attr === 'true') {
+        el.setAttribute('data-dropdown-state', 'false')
+    }
+
+    else if(attr === 'false') {
+        el.setAttribute('data-dropdown-state', 'true')
+    }
+} 
+
+/**
+ * @param e
+ * @param whitelist - Ignores element with same className
+*/
+export function toggleDropdowns<T extends Event>(e: T, whitelist: string) {
+    const target = e.target as HTMLElement;
+    const dropdowns = document.querySelectorAll('*[data-dropdown-state]');
+    
+    if(!target.classList.contains(whitelist)) {
+        dropdowns.forEach(el => el.setAttribute('data-dropdown-state', 'false'));
+    }
 }

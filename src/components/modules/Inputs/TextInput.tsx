@@ -22,6 +22,7 @@ const TextInput = (props: Props_Input<string>) => {
         <input 
           id={`${_props.label}-${_props.type}`}
           list={propOrDefault(_props.list, '')}
+          size={10}
 
           onInput={(e) => _props.onInteract ? _props.onInteract(e) : null}
           placeholder={propOrDefault(_props.placeholder, '')} 

@@ -87,3 +87,13 @@ details > summary::marker {
 [class*='grid'] {
     display: grid;
 }
+
+*[data-hide='true'],
+*[data-dropdown-state='true'] {
+    display: block;
+}
+
+*[data-hide='false'],
+*[data-dropdown-state='false'] {
+    display: none;
+}

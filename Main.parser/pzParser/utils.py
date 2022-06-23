@@ -27,4 +27,5 @@ Humanizes text
 def humanize_text(x: str):
     return ' '.join([x.capitalize() for x in x.split('_')])
 
-combine_text_files_in_dir('./out.txt')
+if __name__ == '__main__':
+    combine_text_files_in_dir('./out.txt')

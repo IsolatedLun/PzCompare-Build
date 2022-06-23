@@ -44,10 +44,12 @@ const ObjectTable = (props: Props_ObjectTable) => {
         <table
           className='[ object-table ] [ text-center width-100vw ]' 
           data-dir={props.direction}>
-            <thead> { /* Cannot add <tr> as a parent because of current styling issues */ }
+            <thead> 
+              <tr>
                 <td>Name</td>
                 <td>Value</td>
                 <td>Pct</td>
+              </tr>
             </thead>
             <tbody>
               {

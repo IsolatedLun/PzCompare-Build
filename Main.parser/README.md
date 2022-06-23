@@ -3,6 +3,7 @@ INFO: For vanilla/mods, the item data are stored in txt files located in the scr
 
 ## Workflow
 INFO: `parser.py` loops throught the **files** folder and parses the txt files.
+
 INFO: `utils.py` is used to combines many txt files (located in the **toCombine** folder) into 1 that will be placed in the **files** folder after being named.
 
 Files in the **files** folders should be named like this:
@@ -10,7 +11,7 @@ Files in the **files** folders should be named like this:
 
 Only using the **auto** keyword is recommended.
 
-EXAMPLEs: 
+EXAMPLES: 
 - Vanilla.weapon.1.txt
 - Vanilla.weapon.2.txt
 - Hydrocraft.auto.1.txt (the auto keyword lets the parser automatically sort the types)

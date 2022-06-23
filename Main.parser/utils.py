@@ -1,5 +1,5 @@
 """
-Convers a tuple into a dict
+Converts an array of tuples into a dict
 (key, val) => { key: val }
 """
 def tuples_to_dict(arr: list[tuple]):

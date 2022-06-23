@@ -1,5 +1,5 @@
 import React from "react";
-import { Props_AriaElement, Props_CubeCSS, Props_Element } from "../components/types";
+import { Props_CubeCSS, Props_Element } from "../components/types";
 
 /**
  * @param x - Object
@@ -7,7 +7,6 @@ import { Props_AriaElement, Props_CubeCSS, Props_Element } from "../components/t
  * @def - Default return value
 */
 export function objGet(x: object, path: string, def: any) {
-   
     try {
         return eval(path);
     }
@@ -132,19 +131,6 @@ export function strSearch(toSearch: string, x: string): boolean {
     return toSearch.toLowerCase().indexOf(x.toLowerCase()) > -1;
 }
 
-export function highlightElement(id: string, targetParent: boolean) {
-    let el = document.getElementById(id) as HTMLElement;
-
-    if(targetParent)
-        el = el.parentElement ? el.parentElement : el;
-
-    if(el)
-        if(el?.classList.contains('anim-highlight'))
-            el.classList.remove('anim-highlight');
-
-        el?.classList.add('anim-highlight');
-}
-
 /**
  * @param id
 */
@@ -166,18 +152,20 @@ export function toggleTargetDropdown(id: string) {
  * @param whitelist - Ignores element with same className
 */
 export function toggleDropdowns<T extends Event>(e: T, whitelist: string) {
+    e.stopPropagation();
+
     const target = e.target as HTMLElement;
     const dropdowns = document.querySelectorAll('*[data-dropdown-state]');
-    
+
+    // The id of the possibly clicked dropdown
+    const ignoreId = propOrDefault(target.closest('.list')?.id, 'NaE')
+
     if(!target.classList.contains(whitelist)) {
-        dropdowns.forEach(el => el.setAttribute('data-dropdown-state', 'false'));
+        dropdowns.forEach(el => {
+            if(el.id !== ignoreId)
+                el.setAttribute('data-dropdown-state', 'false');
+            else
+                el.setAttribute('data-dropdown-state', 'true');
+        });
     }
-}
-
-export function humanizeText(x: string): string {
-    function capitalize(y: string) {
-        return y[0].toUpperCase() + y.substring(1);
-    }
-
-    return x.split('_').map(z => capitalize(z)).join(' ')
 }

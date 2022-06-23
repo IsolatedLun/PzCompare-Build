@@ -1,7 +1,7 @@
 import re
 import json
 from os import walk
-from utils import tuples_to_dict, humanize_text
+from utils import tuples_to_dict
 from datetime import datetime
 
 """
@@ -21,13 +21,13 @@ def file_parse(f_name: str, output: str, write_to_file: bool):
         
         for x in re.findall(pattern, x, re.S):
             name, items = x[0], get_items(x[1])
-            data[name.lower()] = tuples_to_dict(items)
+            data[name.lower()] = tuples_to_dict(items) # Converts a tuple to a dict
             names.append(name)
 
         return [data, names]
 
     def get_items(x: str):
-        pattern = r'(\w+)\s*=\s*(\S+),'
+        pattern = r'(\w+)\s*=\s*([^\s,](?:[^,]*[^\s,])?)'
 
         return re.findall(pattern, x.strip(), re.MULTILINE)
 
@@ -71,27 +71,31 @@ def bulk_parse(dir: str, output: str):
                 print(f'Parsing {f_name}...')
 
                 _data, _names = file_parse(f'{dir}/{f_name}', output, False)
+                _names = set(_names)
 
                 objects.update(_data)
                 names += _names
 
                 # Required filename eg. {category}.{type}.{index}.txt
                 category, sub_category, *_ = f_name.split('.')
+
+                categories.setdefault(category, {})
                 
                 # Automatically sorts/bundles items according to their type
                 # setdefault is used as to not override an existing sub_category
+                # { x -> real text, z -> humanized text }
+                # x, z are used instead of long chars. to save space
                 if sub_category == 'auto':
                     for (key, val) in _data.items():
-                        categories.setdefault(category, {}) \
-                            .setdefault(val['Type'].lower(), []).append(
-                                { 'x': key, 'z': humanize_text(key) }
-                            )
+                        dt = { 'x': key, 'z': val.get('DisplayName', key) }
+
+                        categories[category].setdefault(val['Type'].lower(), []).append(dt)
 
                         unique_sub_categories.add(val['Type'].lower())
                 else:
-                    categories.setdefault(category, {}) \
-                        .setdefault(sub_category, []) \
-                        .extend([{ 'x': x, 'z': humanize_text(x) } for x in _names])
+                    categories[category].setdefault(sub_category, []).extend(
+                        [{ 'x': x, 'z': objects[x.lower()].get('DisplayName', x) } for x in _names]
+                    )
 
                 print(f'Finished parsing {f_name}...\n')
 
@@ -115,4 +119,4 @@ def bulk_parse(dir: str, output: str):
         json.dump(_dict, main_file)
 
 
-bulk_parse('./files', './Master.json')
+bulk_parse('./files', './MasterData.json')

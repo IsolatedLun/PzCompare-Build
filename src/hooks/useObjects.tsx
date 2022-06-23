@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Props_Object } from "../components/modules/Table/types";
-import { Setter } from "../types";
+import { DT_Object, Setter } from "../types";
 import { comparator } from "../utils/comparator";
 import { collapseText } from "../utils/funcs";
 
-export function useObjects(objects: any): 
+export function useObjects(objects: DT_Object<any>): 
 [
     [string, string, Setter<string>, Setter<string>], 
     [Setter<Props_Object>, Setter<Props_Object>, Function],

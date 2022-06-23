@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { collapseText, highlightElement, openNestedDetails } from '../../../utils/funcs'
+import { collapseText } from '../../../utils/funcs'
 import AnchorButton from '../../modules/Buttons/AnchorButton'
-import Button from '../../modules/Buttons/Button'
 import LinkButton from '../../modules/Buttons/LinkButton'
 import TextInput from '../../modules/Inputs/TextInput'
 import { Props_DictionarySearch } from './types'

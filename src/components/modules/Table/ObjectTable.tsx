@@ -51,17 +51,19 @@ const ObjectTable = (props: Props_ObjectTable) => {
             </thead>
             <tbody>
               {
-                Object.keys(obj.object).map((key) => {
+                Object.keys(obj.object).map((key, index) => {
                   if(props.onlyShowDiffs && obj.diffs[key])
                     return <TableRow 
                             keyName={key} 
                             value={props.data.object[key]} 
-                            pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+                            pct={objGet(obj.diffs, `x.${key}`, undefined)}
+                            key={index} />
                   else if (!props.onlyShowDiffs)
                     return <TableRow 
                               keyName={key} 
                               value={props.data.object[key]} 
-                              pct={objGet(obj.diffs, `x.${key}`, undefined)} />
+                              pct={objGet(obj.diffs, `x.${key}`, undefined)}
+                              key={index} />
                 })
               }
             </tbody>

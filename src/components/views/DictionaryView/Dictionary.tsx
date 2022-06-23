@@ -34,23 +34,25 @@ const Dictionary = (props: Props_MasterData) => {
               className='[ dictionary-header ] [ flex-wrap gap-1 justify-content-center ] 
                 [ under-border padding-block-end-1 margin-block-end-2 ]'>
                 {
-                  Object.entries(props.masterData.misc).map(([key, val]) => (
-                    <DictionaryCard num={val} text={key} />
+                  Object.entries(props.masterData.misc).map(([key, val], index) => (
+                    <DictionaryCard num={val} text={key} key={index}/>
                   ))
                 }
             </header>
 
             <div className="[ object-collections ] [ flex-direction-column ] [ gap-3 ]">
               {
-                Object.entries(props.masterData.categories).map(([key, val]) => {
+                Object.entries(props.masterData.categories).map(([key, val], index) => {
                   if(category.length > 0 && strSearch(key, category))
                     return <ObjectCollection 
                               categoryName={key}
-                              subCategories={val} />
+                              subCategories={val} 
+                              key={index} />
                   else if(category.length === 0)
                     return <ObjectCollection 
                               categoryName={key}
-                              subCategories={val} />
+                              subCategories={val}
+                              key={index} />
                 })
                   
               }

@@ -5,7 +5,7 @@ const Datalist = (props: Props_DataList) => {
   return (
     <datalist id={props.id}>
         {
-            props.list.map(data => <option value={data} />)
+            props.list.map((data, index) => <option value={data} key={index}/>)
         }
     </datalist>
   )

@@ -1,7 +1,7 @@
 commands
 *.txt
 pzParser/*.json
-pzParser/toCombine
-pzParser/files
+pzParser/toCombine/*
+pzParser/files/*
 
 __pycache__

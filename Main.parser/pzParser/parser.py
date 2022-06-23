@@ -21,7 +21,7 @@ def file_parse(f_name: str, output: str, write_to_file: bool):
         
         for x in re.findall(pattern, x, re.S):
             name, items = x[0], get_items(x[1])
-            data[name.lower()] = tuples_to_dict(items)
+            data[name.lower()] = tuples_to_dict(items) # Converts a tuple to a dict
             names.append(name)
 
         return [data, names]
@@ -77,20 +77,22 @@ def bulk_parse(dir: str, output: str):
 
                 # Required filename eg. {category}.{type}.{index}.txt
                 category, sub_category, *_ = f_name.split('.')
+
+                categories.setdefault(category, {})
                 
                 # Automatically sorts/bundles items according to their type
                 # setdefault is used as to not override an existing sub_category
+                # { x -> real text, z -> humanized text }
+                # x, z are used instead of long chars. to save space
                 if sub_category == 'auto':
                     for (key, val) in _data.items():
-                        categories.setdefault(category, {}) \
-                            .setdefault(val['Type'].lower(), []).append(
+                        categories[category].setdefault(val['Type'].lower(), []).append(
                                 { 'x': key, 'z': humanize_text(key) }
                             )
 
                         unique_sub_categories.add(val['Type'].lower())
                 else:
-                    categories.setdefault(category, {}) \
-                        .setdefault(sub_category, []) \
+                    categories[category].setdefault(sub_category, []) \
                         .extend([{ 'x': x, 'z': humanize_text(x) } for x in _names])
 
                 print(f'Finished parsing {f_name}...\n')

@@ -4,7 +4,7 @@ import { createCubeCSSClass, prepareProps, propOrDefault } from '../../../utils/
 import { Props_LinkButton } from './types';
 
 const AnchorButton = (props: Props_LinkButton) => {
-    const _props = prepareProps(props, { compostClass: 'button' })
+    const _props = prepareProps(props, { compostClass: 'button' });
   
     return (
     <a 

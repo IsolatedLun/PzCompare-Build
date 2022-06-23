@@ -5,8 +5,6 @@ import DropDownList from '../../Lists/DropDownList'
 import { Props_TableRow } from '../types'
 
 const EvolvedRecipeRow = (props: Props_TableRow) => {
-  const [show, setShow] = useState(false);
-
   const values = props.value ? (props.value as string).split(';') : [];
   const dropdownId = props.value + '-dropdown' ;
 
@@ -20,7 +18,7 @@ const EvolvedRecipeRow = (props: Props_TableRow) => {
                 utilClass='border-radius-cubed whitespace-nowrap'
                 variant='primary'
                 secondaryVariant='tight'
-                onInteract={() => { setShow(!show);  toggleTargetDropdown(dropdownId)}}>
+                onInteract={() => toggleTargetDropdown(dropdownId)}>
               Show recipes
             </Button>
 

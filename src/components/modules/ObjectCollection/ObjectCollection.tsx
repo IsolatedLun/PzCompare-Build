@@ -45,8 +45,8 @@ const SubCollection = (props: Props_SubCollection) => {
             <div className="[ sub-collection__items ] [ flex-direction-column ] 
                 [ gap-1 padding-2 border-radius-bottom-cubed ]">
                 {
-                    props.objects.map(data => <CollectionItem
-                            { ...{...data, subParentId: subDetailId} } />
+                    props.objects.map((data, index) => <CollectionItem
+                            { ...{...data, subParentId: subDetailId, key:index} } />
                         )
                 }
             </div>
@@ -73,11 +73,12 @@ const ObjectCollection = (props: Props_ObjectCollection) => {
             <div className="[ collection__items ] [ flex-direction-column ] 
                 [ gap-2 padding-2 border-radius-bottom-cubed ]">
                 {
-                    Object.entries(props.subCategories).map(([key, val]) => 
+                    Object.entries(props.subCategories).map(([key, val], index) => 
                         <SubCollection 
                             subCategoryName={key}
                             parentId={detailId}
-                            objects={val as any} />)
+                            objects={val as any}
+                            key={index} />)
                 }
             </div>
         </details>

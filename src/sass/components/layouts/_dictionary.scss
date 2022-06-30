@@ -1,3 +1,7 @@
 .dictionary-container {
     grid-template-columns: 1fr 4fr;
+
+    .dictionary-search .search__key-val-container * {
+        width: 7ch * 2;
+    }
 }

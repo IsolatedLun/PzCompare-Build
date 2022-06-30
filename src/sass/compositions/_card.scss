@@ -1,5 +1,9 @@
 .card {
     background-color: var(--clr-background-500);
+
+    .card-header {
+        background-color: var(--clr-background-600);
+    }
 }
 
 .card[data-variant='light'] {

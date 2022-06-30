@@ -13,15 +13,11 @@ export function useObjects(objects: DT_Object<any>):
 {
     function compareObjects() {
         if(xObjText.length > 0 && yObjText.length > 0) {
-            const xText = collapseText(xObjText);
-            const yText = collapseText(yObjText);
+          if(objects[xObjText] && objects[yObjText]) {
+            const [xDiffs, yDiffs, xPct, yPct] = comparator(objects[xObjText], objects[yObjText]);
 
-
-          if(objects[xText] && objects[yText]) {
-            const [xDiffs, yDiffs, xPct, yPct] = comparator(objects[xText], objects[yText]);
-
-            setXObj({ object: objects[xText], diffs: xDiffs, avgPct: xPct });
-            setYObj({ object: objects[yText], diffs: yDiffs, avgPct: yPct });
+            setXObj({ object: objects[xObjText], diffs: xDiffs, avgPct: xPct });
+            setYObj({ object: objects[yObjText], diffs: yDiffs, avgPct: yPct });
           }
         }
     }

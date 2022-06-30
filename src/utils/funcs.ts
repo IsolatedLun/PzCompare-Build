@@ -169,3 +169,24 @@ export function toggleDropdowns<T extends Event>(e: T, whitelist: string) {
         });
     }
 }
+
+/**
+ * @param object
+ * @summary Returns false if any data structure in the obj has a len of 0
+*/
+export function containsEmptyValue(dict: any): boolean {
+    for(const key in dict) {
+        if(dict[key].length === 0)
+            return false;
+    }
+
+    return true;
+}
+
+export function safeUrlEncode(str: string): string {
+    return str.replaceAll('&', '/$AMP/')
+}
+
+export function safeUrlDecode(str: string): string {
+    return str.replaceAll('/$AMP/', '&')
+}

@@ -53,7 +53,13 @@ $colors-dark: (
     input: (
         'border': hsl(220 97% 35%),
         'shadow': hsl(220 97% 45% / 0.36)
-    )
+    ),
+
+    tag: (
+        '400': hsl(220 92% 69%),
+        'background': hsl(220 70% 36% / 0.24),
+        'faded-background': hsl(220 70% 36% / 0.14),
+    ),
 );
 
 $colors-light: (
@@ -111,7 +117,13 @@ $colors-light: (
     input: (
         'border': hsl(220 97% 35%),
         'shadow': hsl(220 97% 45% / 0.36)
-    )
+    ),
+
+    tag: (
+        'tag': hsl(220 92% 69%),
+        'tag-background': hsl(220 70% 36% / 0.24),
+        'tag-faded-background': hsl(220 70% 36% / 0.14),
+    ),
 );
 
 $active-theme: $colors-dark;

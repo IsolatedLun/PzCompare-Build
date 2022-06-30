@@ -1,8 +1,8 @@
 import { useId } from 'react'
 import { Link } from 'react-router-dom'
 import { ARROW_RIGHT } from '../../../consts'
-import { collapseText } from '../../../utils/funcs'
-import Card from '../Cards/Card'
+import { collapseText, safeUrlEncode } from '../../../utils/funcs'
+import { Card } from '../Cards/Card'
 import Icon from '../Icons/Icon'
 import { Props_ObjectCollection, Props_SubCollection, Props_SubCollectionItem } from './types'
 
@@ -11,10 +11,10 @@ const CollectionItem = (props: Props_SubCollectionItem) => {
         <Card 
             blockClass='collection__item' 
             utilClass='padding-inline-2 padding-block-1 border-radius-cubed'>
-            <Link to={`/view?name=${props.x}`} 
+            <Link to={`/view?name=${safeUrlEncode(props.name)}`} 
                 data-parent-id={props.subParentId} 
-                id={'object-' + collapseText(props.x)}>
-                { props.z }
+                id={'object-' + `"${props.name}"`}>
+                { props.name }
             </Link>
         </Card>
     )
@@ -22,7 +22,7 @@ const CollectionItem = (props: Props_SubCollectionItem) => {
 
 const SubCollection = (props: Props_SubCollection) => {
     const subDetailId = useId();
-
+    
     return (
         <details id={subDetailId} data-parent-id={props.parentId} className='[ collection__sub ]'>
             <summary className='[ sub__category ]' >
@@ -46,7 +46,7 @@ const SubCollection = (props: Props_SubCollection) => {
                 [ gap-1 padding-2 border-radius-bottom-cubed ]">
                 {
                     props.objects.map((data, index) => <CollectionItem
-                            { ...{...data, subParentId: subDetailId, key:index} } />
+                            name={data} subParentId={subDetailId} key={index}  />
                         )
                 }
             </div>
@@ -85,4 +85,4 @@ const ObjectCollection = (props: Props_ObjectCollection) => {
     )
 }
 
-export default ObjectCollection
+export { ObjectCollection, CollectionItem }

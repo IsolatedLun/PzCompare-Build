@@ -1,13 +1,15 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Props_MasterData } from '../../../types'
-import { collapseText, propOrDefault } from '../../../utils/funcs'
+import { collapseText, propOrDefault, safeUrlDecode } from '../../../utils/funcs'
 import ObjectTable from '../../modules/Table/ObjectTable'
 
 const ObjectView = (props: Props_MasterData) => {
     const [searchParams] = useSearchParams();
-    const itemName = propOrDefault(searchParams.get('name'), '') as string;
-    const object = props.masterData.objects[collapseText(itemName)];
+    let itemName = propOrDefault(searchParams.get('name'), '') as string;
+    itemName = safeUrlDecode(itemName)
+
+    const object = props.masterData.objects[itemName];
 
     return (
         <div className='[ text-center margin-block-2 ]'>

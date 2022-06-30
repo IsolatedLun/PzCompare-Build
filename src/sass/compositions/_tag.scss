@@ -1,0 +1,8 @@
+.tag {
+    background-color: var(--clr-tag-background);
+    color: var(--clr-tag-400);
+    
+    &:is(:focus, :hover) {
+        filter: brightness(1.1);
+    }
+}

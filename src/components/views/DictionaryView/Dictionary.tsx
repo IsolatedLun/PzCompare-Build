@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Props_MasterData } from '../../../types'
 import { strSearch } from '../../../utils/funcs'
-import Card from '../../modules/Cards/Card'
-import ObjectCollection from '../../modules/ObjectCollection/ObjectCollection'
+import { Card } from '../../modules/Cards/Card'
+import { CollectionItem, ObjectCollection } from '../../modules/ObjectCollection/ObjectCollection'
 import DictionarySearch from './DictionarySearch'
 import { Props_DictionaryCard } from './types'
 
@@ -16,6 +16,7 @@ const DictionaryCard = (props: Props_DictionaryCard) => {
 
 const Dictionary = (props: Props_MasterData) => {
   const [category, setCategory] = useState('');
+  const [showByNames, setShowByNames] = useState(true)
 
   return (
     <section 
@@ -27,7 +28,9 @@ const Dictionary = (props: Props_MasterData) => {
           objects={props.masterData.objects}
 
           categoryValue={category} 
-          categorySetter={setCategory}  />
+          categorySetter={setCategory}
+          showByNamesValue={showByNames}
+          showByNamesSetter={setShowByNames}  />
 
         <div className='[ dictionary ]'>
             <header 
@@ -40,8 +43,10 @@ const Dictionary = (props: Props_MasterData) => {
                 }
             </header>
 
-            <div className="[ object-collections ] [ flex-direction-column ] [ gap-3 ]">
+            <div className={`[ object-collections ] [ flex-direction-column ] [ ${showByNames ? 'gap-1' : 'gap-3'} ]`}>
               {
+                !showByNames
+                ?
                 Object.entries(props.masterData.categories).map(([key, val], index) => {
                   if(category.length > 0 && strSearch(key, category))
                     return <ObjectCollection 
@@ -54,7 +59,7 @@ const Dictionary = (props: Props_MasterData) => {
                               subCategories={val}
                               key={index} />
                 })
-                  
+                : props.masterData.names.map(obj => <CollectionItem name={obj} subParentId='' />)  
               }
             </div>
         </div>

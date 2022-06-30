@@ -5,7 +5,7 @@ import Icon from '../Icons/Icon'
 import { Props_Input } from './types'
 
 const TextInput = (props: Props_Input<string>) => {
-  const _props = prepareProps(props); 
+  const _props = prepareProps(props, { compostClass: 'input' }); 
 
   return (
     <div className='[ input-container ]'>

@@ -67,6 +67,11 @@
     padding: $button-default-tight-spacing;
 }
 
+.button[data-secondary-variant='very-tight'],
+.button.has-link > a {
+    padding: $button-default-very-tight-spacing;
+}
+
 .button[data-work-condition='false'] {
     opacity: 0.5;
     pointer-events: none;

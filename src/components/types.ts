@@ -6,6 +6,12 @@ export interface Props_CubeCSS {
     utilClass?: string;
 }
 
+
+export interface KeyValDict  {
+    keyName: any;
+    value: any
+}
+
 export interface Props_Variant {
     variant?: string | number | boolean;
     secondaryVariant?: string;

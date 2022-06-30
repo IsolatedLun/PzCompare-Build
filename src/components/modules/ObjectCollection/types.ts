@@ -9,12 +9,11 @@ export interface Props_SubCollection {
     subCategoryName: string;
     parentId: string;
     
-    objects: Props_SubCollectionItem[];
+    objects: string[];
 }
 
 export interface Props_SubCollectionItem {
-    x: string;
-    z: string;
+    name: string;
 
     subParentId: string;
 }

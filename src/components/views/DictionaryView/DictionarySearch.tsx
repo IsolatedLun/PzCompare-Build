@@ -50,21 +50,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
           </LinkButton>
         </div>
 
-        <div className='[ flex flex-direction-column align-items-center gap-1 margin-block-start-1 ]'>
-          <KeyValueInput onInteract={(e) => setCurrentFilter(e)} blockClass='search__key-val-container' />
-          <div className='[ flex justify-content-end width-100 ]'>
-            <Button 
-              variant='primary' 
-              secondaryVariant='tight' 
-              workCondition={containsEmptyValue(currentFilter)}
-              onInteract={() => props.filtersSetter((state: any) => 
-                ({ ...state, [currentFilter.keyName]: currentFilter.value }))}
-              utilClass='border-radius-cubed'>
-              Add
-            </Button>
-          </div>
-
-          <Card utilClass='border-radius-cubed width-100 margin-block-2'>
+        <Card utilClass='border-radius-cubed width-100 margin-block-2'>
             <CardHeader utilClass='flex align-items-center justify-content-space-between
                 padding-1 text-center border-radius-top-cubed'>
               <p className='[ fs-500 ]'>{ Object.values(props.filtersValue).length } Active filters</p>
@@ -90,6 +76,24 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
               }
             </div>
           </Card>
+
+        <div className='[ flex flex-direction-column align-items-center gap-1 margin-block-start-1 ]'>
+          <KeyValueInput onInteract={(e) => setCurrentFilter(e)} blockClass='search__key-val-container' />
+          <div className='[ flex justify-content-end width-100 ]'>
+            <Button 
+              variant='primary' 
+              secondaryVariant='tight' 
+              workCondition={containsEmptyValue(currentFilter)}
+              onInteract={() => {
+                props.filtersSetter((state: any) => 
+                  ({ ...state, [currentFilter.keyName]: currentFilter.value }))
+
+                props.showByNamesSetter(true);
+              }}
+              utilClass='border-radius-cubed'>
+              Add
+            </Button>
+          </div>
 
           <ul data-variant='primary' className='[ list ] [ flex flex-direction-column gap-1 text-muted ]'>
             <li>Case sensitive</li>

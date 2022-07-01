@@ -220,7 +220,7 @@ export function safeUrlDecode(str: string): string {
  * @summary Specialized function that filters objects by comparing it to the values in { filters } objects.
  * @returns Filtered array if { filters } has data else returns the items. 
 */
-export function filterObjectArr<T extends object>(objects: DT_Object<any>, items: string[], filters: any): string[] 
+export function filterObjectArr(objects: DT_Object<any>, items: string[], filters: any): string[] 
 {
     if(Object.values(filters).length === 0)
         return items;
@@ -236,7 +236,6 @@ export function filterObjectArr<T extends object>(objects: DT_Object<any>, items
                 filteredArr.push(item)
         }
     })
-
-    console.log(filteredArr)
+    
     return filteredArr;
 }

@@ -16,8 +16,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
     keyName: '',
     value: ''
   });
-  const [filters, setFilters] = useState<KeyValDict[]>([]);
-
+  
   return (
     <div className='[ dictionary-search ] [ flex-direction-column gap-1 ] [ width-100 ]'>
         <TextInput 
@@ -51,46 +50,51 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
           </LinkButton>
         </div>
 
-        <div className='[ flex flex-direction-column align-items-center gap-1 ]' data-hide='false'>
+        <div className='[ flex flex-direction-column align-items-center gap-1 margin-block-start-1 ]'>
           <KeyValueInput onInteract={(e) => setCurrentFilter(e)} blockClass='search__key-val-container' />
-          <div className='[ flex justify-content-space-between width-100 ]'>
+          <div className='[ flex justify-content-end width-100 ]'>
             <Button 
               variant='primary' 
               secondaryVariant='tight' 
               workCondition={containsEmptyValue(currentFilter)}
-              onInteract={() => setFilters((state) => Array.from(new Set([ ...state, currentFilter ])))}
+              onInteract={() => props.filtersSetter((state: any) => 
+                ({ ...state, [currentFilter.keyName]: currentFilter.value }))}
               utilClass='border-radius-cubed'>
               Add
-            </Button>
-            <Button 
-              variant='primary' 
-              secondaryVariant='tight' 
-              utilClass='border-radius-cubed'>
-              Filter
             </Button>
           </div>
 
           <Card utilClass='border-radius-cubed width-100 margin-block-2'>
             <CardHeader utilClass='flex align-items-center justify-content-space-between
                 padding-1 text-center border-radius-top-cubed'>
-              <p className='[ fs-500 ]'>{ filters.length } Active filters</p>
+              <p className='[ fs-500 ]'>{ Object.values(props.filtersValue).length } Active filters</p>
               <Button 
                 utilClass='fs-200 border-radius-cubed' 
                 variant='primary' 
-                onInteract={() => setFilters([])}
+                onInteract={() => props.filtersSetter({})}
                 secondaryVariant='very-tight'>
                 Clear
               </Button>
             </CardHeader>
 
             <div className='[ flex gap-1 padding-1 ]'>
-              { filters.map(filter => 
+              { Object.entries(props.filtersValue).map(([key, val]) => 
               <DictionaryTag 
-                  {...filter} 
-                  onInteract={(e) => setFilters((state) => state.filter(x => x.keyName !== e))} />) 
+                  keyName={key} value={val}
+                  
+                  onInteract={(e) => props.filtersSetter((state: any) => {
+                    delete state[e];
+
+                    return { ...state };
+                  })} />) 
               }
             </div>
           </Card>
+
+          <ul data-variant='primary' className='[ list ] [ flex flex-direction-column gap-1 text-muted ]'>
+            <li>Case sensitive</li>
+            <li>Eg.  Key = Type, Value = Weapon</li>
+          </ul>
         </div>
 
         <div className='margin-block-1'>
@@ -102,8 +106,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
         </div>
 
         <ul data-variant='primary' className='[ list ] [ flex flex-direction-column gap-1 text-muted ]'>
-          <li>You can search items without a category.</li>
-          <li>Filters only apply when items are shown. [WIP]</li>
+          <li>Filters only apply when items are shown.</li>
         </ul>
     </div>
   )

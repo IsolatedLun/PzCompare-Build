@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { usePagination } from '../../../hooks/usePagination'
 import { Props_MasterData } from '../../../types'
-import { strSearch } from '../../../utils/funcs'
+import { filterObjectArr, strSearch } from '../../../utils/funcs'
 import { Card } from '../../modules/Cards/Card'
 import { CollectionItem, ObjectCollection } from '../../modules/ObjectCollection/ObjectCollection'
 import Pagination from '../../modules/Pagination/Pagination'
+import { KeyValDict } from '../../types'
 import DictionarySearch from './DictionarySearch'
 import { Props_DictionaryCard } from './types'
 
@@ -20,13 +21,13 @@ const Dictionary = (props: Props_MasterData) => {
   const [category, setCategory] = useState('');
   const [item, setItem] = useState('');
 
-  const [allItems, setAllItems] = useState(props.masterData.names);
+  const [filters, setFilters] = useState<any>({});
 
   const [showByNames, setShowByNames] = useState(false);
   const [count, setCount] = useState(10);
 
   const [ items, setStart, setEnd, _count, allDataLen, [start, end] ] = 
-    usePagination(props.masterData.names, count, item);
+    usePagination(props.masterData.objects, props.masterData.names, count, item, filters);
 
   return (
     <section 
@@ -42,6 +43,9 @@ const Dictionary = (props: Props_MasterData) => {
 
           itemSetter={setItem}
           itemValue={item}
+
+          filtersSetter={setFilters}
+          filtersValue={filters}
 
           showByNamesValue={showByNames}
           showByNamesSetter={setShowByNames}  />

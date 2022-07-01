@@ -1,5 +1,6 @@
 import React from "react";
 import { Props_CubeCSS, Props_Element } from "../components/types";
+import { DT_Object } from "../types";
 
 /**
  * @param x - Object
@@ -39,6 +40,18 @@ export function randomArrLen(maxLen: number): number {
 */
 export function collapseText(x: string): string {
     return x.replace(/\s/gm, '').toLowerCase();
+}
+
+/**
+ * @param x
+ * @returns 'Louna is my cat' => 'Louna Is My Cat'
+*/
+export function capitalizeText(x: string): string {
+    function capitalizeStr(y: string) {
+        return y.charAt(0).toUpperCase() + y.slice(1);
+    }
+
+    return x.split(' ').map(z => capitalizeStr(z)).join(' ');
 }
 
 export function sum(pctArr: number[]): number {
@@ -183,10 +196,47 @@ export function containsEmptyValue(dict: any): boolean {
     return true;
 }
 
+/**
+ * @param str
+ * @summary Some items have the & char, so its encoded into something that the browser
+ * will treat as a normal str 
+*/
 export function safeUrlEncode(str: string): string {
     return str.replaceAll('&', '/$AMP/')
 }
 
+/**
+ * @param str
+ * @summary Decodes the & char.
+*/
 export function safeUrlDecode(str: string): string {
     return str.replaceAll('/$AMP/', '&')
+}
+
+/**
+ * @param objects
+ * @param items
+ * @param filters
+ * @summary Specialized function that filters objects by comparing it to the values in { filters } objects.
+ * @returns Filtered array if { filters } has data else returns the items. 
+*/
+export function filterObjectArr<T extends object>(objects: DT_Object<any>, items: string[], filters: any): string[] 
+{
+    if(Object.values(filters).length === 0)
+        return items;
+
+    const filteredArr: string[] = [];
+
+    items.forEach((item) => {
+        for(const key in filters) {
+            const cleanKey = capitalizeText(key);
+            const cleanVal = capitalizeText(filters[key]);
+
+            if(objects[item][cleanKey] === cleanVal)
+                filteredArr.push(item)
+        }
+    })
+
+    console.log(filteredArr)
+    return filteredArr;
 }

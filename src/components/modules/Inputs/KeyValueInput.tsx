@@ -20,7 +20,7 @@ const KeyValueInput = (props: Props_KeyValueInput) => {
             <TextInput 
                 onInteract={(e) => setKey(e.currentTarget.value)} 
                 value={key} 
-                label='Key'
+                label='Key/Attribute'
                 type='string' />
             <TextInput
                 onInteract={(e) => setValue(e.currentTarget.value)} 

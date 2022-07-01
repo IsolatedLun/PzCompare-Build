@@ -12,7 +12,6 @@ import { KeyValDict } from '../../types'
 import { Props_DictionarySearch } from './types'
 
 const DictionarySearch = (props: Props_DictionarySearch) => {
-  const [item, setItem] = useState('');
   const [currentFilter, setCurrentFilter] = useState<KeyValDict>({
     keyName: '',
     value: ''
@@ -32,30 +31,22 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
 
         <TextInput 
             utilClass='width-100'
-            value={item}
+            value={props.itemValue}
             list='object-list'
             label='Item'
             placeholder='Search item'
             type='string'
-            onClearInput={() => setItem('')}
-            onInteract={(e) => setItem(e.currentTarget.value)} />
+            onClearInput={() => props.itemSetter('')}
+            onInteract={(e) => props.itemSetter(e.currentTarget.value)} />
 
-        <div className='[ flex justify-content-space-between margin-block-start-2 ]'>
-          <AnchorButton 
-            variant='primary'
-            secondaryVariant='tight'
-            utilClass='border-radius-cubed'
-            target={'_self'}
-            to={`#object-${item}`}>
-            Search
-          </AnchorButton>
+        <div className='[ flex justify-content-end margin-block-start-2 ]'>
           <LinkButton
             secondaryVariant='tight'
             utilClass='border-radius-cubed'
             variant='primary'
             target={'_self'}
-            workCondition={props.objects[item] !== undefined}
-            to={`/view?name=${safeUrlEncode(item)}`}>
+            workCondition={props.objects[props.itemValue] !== undefined}
+            to={`/view?name=${safeUrlEncode(props.itemValue)}`}>
             View Item
           </LinkButton>
         </div>

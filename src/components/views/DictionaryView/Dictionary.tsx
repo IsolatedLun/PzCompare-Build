@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { usePagination } from '../../../hooks/usePagination'
 import { Props_MasterData } from '../../../types'
 import { strSearch } from '../../../utils/funcs'
 import { Card } from '../../modules/Cards/Card'
 import { CollectionItem, ObjectCollection } from '../../modules/ObjectCollection/ObjectCollection'
+import Pagination from '../../modules/Pagination/Pagination'
 import DictionarySearch from './DictionarySearch'
 import { Props_DictionaryCard } from './types'
 
@@ -16,7 +18,15 @@ const DictionaryCard = (props: Props_DictionaryCard) => {
 
 const Dictionary = (props: Props_MasterData) => {
   const [category, setCategory] = useState('');
-  const [showByNames, setShowByNames] = useState(true)
+  const [item, setItem] = useState('');
+
+  const [allItems, setAllItems] = useState(props.masterData.names);
+
+  const [showByNames, setShowByNames] = useState(false);
+  const [count, setCount] = useState(10);
+
+  const [ items, setStart, setEnd, _count, allDataLen, [start, end] ] = 
+    usePagination(props.masterData.names, count, item);
 
   return (
     <section 
@@ -29,6 +39,10 @@ const Dictionary = (props: Props_MasterData) => {
 
           categoryValue={category} 
           categorySetter={setCategory}
+
+          itemSetter={setItem}
+          itemValue={item}
+
           showByNamesValue={showByNames}
           showByNamesSetter={setShowByNames}  />
 
@@ -52,14 +66,27 @@ const Dictionary = (props: Props_MasterData) => {
                     return <ObjectCollection 
                               categoryName={key}
                               subCategories={val} 
-                              key={index} />
+                              key={index + key} />
                   else if(category.length === 0)
                     return <ObjectCollection 
                               categoryName={key}
                               subCategories={val}
-                              key={index} />
+                              key={index + key} />
                 })
-                : props.masterData.names.map(obj => <CollectionItem name={obj} subParentId='' />)  
+                : (
+                  <>
+                    { items.map(obj => <CollectionItem name={obj} subParentId='' />) }
+                    <Pagination 
+                      startSetter={setStart}
+                      endSetter={setEnd}
+
+                      count={count}
+                      start={start}
+                      end={end}
+                      dataLen={allDataLen}
+                    />
+                  </>
+                ) 
               }
             </div>
         </div>

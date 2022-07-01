@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARROW_RIGHT } from '../../../consts'
 import { collapseText, safeUrlEncode } from '../../../utils/funcs'
@@ -22,10 +22,11 @@ const CollectionItem = (props: Props_SubCollectionItem) => {
 
 const SubCollection = (props: Props_SubCollection) => {
     const subDetailId = useId();
+    const [isOpen, setIsOpen] = useState(false);
     
     return (
         <details id={subDetailId} data-parent-id={props.parentId} className='[ collection__sub ]'>
-            <summary className='[ sub__category ]' >
+            <summary className='[ sub__category ]' onClick={() => setIsOpen(true)}>
                 <Card 
                     variant='light'
                     utilClass='flex align-items-center padding-inline-2 padding-block-1 
@@ -45,9 +46,12 @@ const SubCollection = (props: Props_SubCollection) => {
             <div className="[ sub-collection__items ] [ flex-direction-column ] 
                 [ gap-1 padding-2 border-radius-bottom-cubed ]">
                 {
+                    isOpen
+                    ?
                     props.objects.map((data, index) => <CollectionItem
-                            name={data} subParentId={subDetailId} key={index}  />
+                            name={data} subParentId={subDetailId} key={index + data}  />
                         )
+                    : null
                 }
             </div>
         </details>
@@ -57,9 +61,12 @@ const SubCollection = (props: Props_SubCollection) => {
 const ObjectCollection = (props: Props_ObjectCollection) => {
     const detailId = useId();
 
+    // Only renders items when the <details> is open, improves performance.
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <details id={detailId} className='[ object-collection ]'>
-            <summary className='[ collection__category ]' >
+            <summary className='[ collection__category ]' onClick={() => setIsOpen(true)}>
                 <Card 
                     utilClass='flex align-items-center padding-inline-2 padding-block-1 
                         pos-relative border-radius-top-cubed'
@@ -73,12 +80,15 @@ const ObjectCollection = (props: Props_ObjectCollection) => {
             <div className="[ collection__items ] [ flex-direction-column ] 
                 [ gap-2 padding-2 border-radius-bottom-cubed ]">
                 {
+                    isOpen
+                    ?
                     Object.entries(props.subCategories).map(([key, val], index) => 
                         <SubCollection 
                             subCategoryName={key}
                             parentId={detailId}
                             objects={val as any}
-                            key={index} />)
+                            key={index + key} />)
+                    : null
                 }
             </div>
         </details>

@@ -84,7 +84,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
             onInteract={(e) => setCurrentFilter({ ...e, op: currentFilter.op })} 
             blockClass='search__key-val-container' />
 
-          <div className='[ flex justify-content-space-between width-100 ]'>
+          <div className='[ flex align-items-center justify-content-space-between width-100 ]' data-flex-collapse>
             <div className='[ flex gap-2  ]'>
               <Button 
                 secondaryVariant='tight' 
@@ -107,6 +107,11 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
                 utilClass='border-radius-cubed'>
                 { '>' }
               </Button>
+
+              <div className='[ flex flex-direction-column align-items-center gap-1 text-center ]'>
+                <p className='[ text-muted fs-300 ]'>Current operator</p>
+                <p className='[ fs-400 fw-bold ]'>{ currentFilter.op === '===' ? '=' : currentFilter.op }</p>
+              </div>
             </div>
             <Button 
               variant='primary' 
@@ -118,7 +123,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
 
                 props.showByNamesSetter(true);
               }}
-              utilClass='border-radius-cubed'>
+              utilClass='border-radius-cubed margin-block-start-1'>
               Add
             </Button>
           </div>

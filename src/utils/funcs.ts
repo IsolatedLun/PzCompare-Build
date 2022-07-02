@@ -249,14 +249,20 @@ export function filterObjectArr(objects: DT_Object<any>, items: string[], filter
 
             const op = filters[key].op;
 
-            if(isArrNumeric([objVal, cleanVal]) && op.length > 0) {
-                if(eval(`Number(objVal) ${op} Number(cleanVal)`)) {
-                    filteredArr.push(item);
-                }
+            let cache: DT_Object<number> = {};
+            if(objVal === cleanVal) {
+                const len = filteredArr.push(item);
+
+                cache[item] = len - 1;
             }
 
-            else if(objVal === cleanVal) {
-                filteredArr.push(item);
+            if(isArrNumeric([objVal, cleanVal]) && op.length > 0) {
+                if(eval(`Number(objVal) ${op} Number(cleanVal)`) === true) {
+                    filteredArr.push(item);
+                }
+
+                else if(cache[item] !== null)
+                    filteredArr.splice(cache[item], 1)
             }
         }
     })

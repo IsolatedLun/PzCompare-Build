@@ -28,7 +28,7 @@ const Dictionary = (props: Props_MasterData) => {
 
   const [ items, setStart, setEnd, _count, allDataLen, [start, end] ] = 
     usePagination(props.masterData.objects, props.masterData.names, count, item, filters);
-
+    
   return (
     <section 
         className="[ dictionary-container ] [ grid gap-4 margin-block-1 ]" 

@@ -65,7 +65,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
               </Button>
             </CardHeader>
 
-            <div className='[ flex gap-1 padding-1 ]'>
+            <div className='[ flex gap-1 padding-1 flex-wrap ]'>
               { Object.values(props.filtersValue as DT_Object<Filter>).map((data) => 
               <DictionaryTag 
                   keyName={data.keyName} value={data.value} op={data.op}

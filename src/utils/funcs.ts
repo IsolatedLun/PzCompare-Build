@@ -92,17 +92,8 @@ export function hasTypeof(val: any, conditions: string[]) {
     return conditions.includes(typeof(val));
 }
 
-export function isArrNumeric(arr: any[]) {
-    let bool = true
-
-    for(let i = 0; i < arr.length; i++) {
-        if(Number.isFinite(Number(arr[i])) !== true) {
-            bool = false;
-            return false;
-        } 
-    }
-
-    return bool;
+export function isNumber(x: any) {
+    return Number.isFinite(Number(x));
 }
 
 /**
@@ -238,33 +229,18 @@ export function filterObjectArr(objects: DT_Object<any>, items: string[], filter
     if(Object.values(filters).length === 0)
         return items;
 
-    const filteredArr: string[] = [];
+    const filteredArr: string[] = items.filter(item => {
+        return Object.keys(filters).every(filterKey => {
+            const filterVal = filters[filterKey].value;
+            const objVal = objects[item][filterKey];
 
-    items.forEach((item) => {
-        for(const key in filters) {
-            const cleanKey = capitalizeText(key);
+            const op = filters[filterKey].op.length > 0 ? filters[filterKey].op : '===';
 
-            const objVal = objects[item][cleanKey];
-            const cleanVal = capitalizeText(filters[key].value);
-
-            const op = filters[key].op;
-
-            let cache: DT_Object<number> = {};
-            if(objVal === cleanVal) {
-                const len = filteredArr.push(item);
-
-                cache[item] = len - 1;
-            }
-
-            if(isArrNumeric([objVal, cleanVal]) && op.length > 0) {
-                if(eval(`Number(objVal) ${op} Number(cleanVal)`) === true) {
-                    filteredArr.push(item);
-                }
-
-                else if(cache[item] !== null)
-                    filteredArr.splice(cache[item], 1)
-            }
-        }
+            if(isNumber(filterVal) && eval(`objVal ${op} filterVal`))
+                return item
+            else if(objVal === filterVal)
+                return item;
+        })
     })
     
     return filteredArr;

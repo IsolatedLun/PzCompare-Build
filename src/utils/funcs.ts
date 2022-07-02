@@ -1,5 +1,5 @@
 import React from "react";
-import { Props_CubeCSS, Props_Element } from "../components/types";
+import { Filter, Props_CubeCSS, Props_Element } from "../components/types";
 import { DT_Object } from "../types";
 
 /**
@@ -90,6 +90,19 @@ export function preciseDeci(num: number): number {
 */
 export function hasTypeof(val: any, conditions: string[]) {
     return conditions.includes(typeof(val));
+}
+
+export function isArrNumeric(arr: any[]) {
+    let bool = true
+
+    for(let i = 0; i < arr.length; i++) {
+        if(Number.isFinite(Number(arr[i])) !== true) {
+            bool = false;
+            return false;
+        } 
+    }
+
+    return bool;
 }
 
 /**
@@ -187,9 +200,9 @@ export function toggleDropdowns<T extends Event>(e: T, whitelist: string) {
  * @param object
  * @summary Returns false if any data structure in the obj has a len of 0
 */
-export function containsEmptyValue(dict: any): boolean {
+export function containsEmptyValue(dict: any, ignores: string[]): boolean {
     for(const key in dict) {
-        if(dict[key].length === 0)
+        if(dict[key].length === 0 && !ignores.includes(key))
             return false;
     }
 
@@ -220,7 +233,7 @@ export function safeUrlDecode(str: string): string {
  * @summary Specialized function that filters objects by comparing it to the values in { filters } objects.
  * @returns Filtered array if { filters } has data else returns the items. 
 */
-export function filterObjectArr(objects: DT_Object<any>, items: string[], filters: any): string[] 
+export function filterObjectArr(objects: DT_Object<any>, items: string[], filters: DT_Object<Filter>): string[] 
 {
     if(Object.values(filters).length === 0)
         return items;
@@ -230,10 +243,21 @@ export function filterObjectArr(objects: DT_Object<any>, items: string[], filter
     items.forEach((item) => {
         for(const key in filters) {
             const cleanKey = capitalizeText(key);
-            const cleanVal = capitalizeText(filters[key]);
 
-            if(objects[item][cleanKey] === cleanVal)
-                filteredArr.push(item)
+            const objVal = objects[item][cleanKey];
+            const cleanVal = capitalizeText(filters[key].value);
+
+            const op = filters[key].op;
+
+            if(isArrNumeric([objVal, cleanVal]) && op.length > 0) {
+                if(eval(`Number(objVal) ${op} Number(cleanVal)`)) {
+                    filteredArr.push(item);
+                }
+            }
+
+            else if(objVal === cleanVal) {
+                filteredArr.push(item);
+            }
         }
     })
     

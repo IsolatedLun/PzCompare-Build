@@ -12,6 +12,12 @@ export interface KeyValDict  {
     value: any
 }
 
+export interface Filter {
+    keyName: string;
+    value: string;
+    op: string;
+}
+
 export interface Props_Variant {
     variant?: string | number | boolean;
     secondaryVariant?: string;

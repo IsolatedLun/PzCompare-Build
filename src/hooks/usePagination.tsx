@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Filter } from "../components/types";
 import { DT_Object, Setter } from "../types";
 import { filterObjectArr, strSearch } from "../utils/funcs";
 
@@ -11,7 +12,7 @@ import { filterObjectArr, strSearch } from "../utils/funcs";
  * @summary A very specialized pagination hook that can filter objects too.
 */
 export function usePagination<T>(objects: DT_Object<any>, data: T[], count: number, 
-    textFilter: string, objFilters: any): 
+    textFilter: string, objFilters: DT_Object<Filter>): 
 [T[], Setter<number>, Setter<number>, number, number, [number, number]] 
 {
     const [currentItems, setCurrentItems] = useState<T[]>([]);

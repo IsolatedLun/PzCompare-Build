@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePagination } from '../../../hooks/usePagination'
 import { Props_MasterData } from '../../../types'
 import { filterObjectArr, strSearch } from '../../../utils/funcs'

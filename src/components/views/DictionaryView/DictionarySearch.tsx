@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { DT_Object } from '../../../types'
 import { containsEmptyValue, safeUrlEncode } from '../../../utils/funcs'
 import AnchorButton from '../../modules/Buttons/AnchorButton'
 import Button from '../../modules/Buttons/Button'
@@ -8,13 +9,14 @@ import CheckboxInput from '../../modules/Inputs/CheckboxInput'
 import KeyValueInput from '../../modules/Inputs/KeyValueInput'
 import TextInput from '../../modules/Inputs/TextInput'
 import DictionaryTag from '../../modules/Tags/DictionaryTag'
-import { KeyValDict } from '../../types'
+import { Filter, KeyValDict } from '../../types'
 import { Props_DictionarySearch } from './types'
 
 const DictionarySearch = (props: Props_DictionarySearch) => {
-  const [currentFilter, setCurrentFilter] = useState<KeyValDict>({
+  const [currentFilter, setCurrentFilter] = useState<Filter>({
     keyName: '',
-    value: ''
+    value: '',
+    op: ''
   });
   
   return (
@@ -38,7 +40,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
             onClearInput={() => props.itemSetter('')}
             onInteract={(e) => props.itemSetter(e.currentTarget.value)} />
 
-        <div className='[ flex justify-content-end margin-block-start-2 ]'>
+        <div className='[ under-border ] [ flex justify-content-end margin-block-start-1 padding-block-end-2 ]'>
           <LinkButton
             secondaryVariant='tight'
             utilClass='border-radius-cubed'
@@ -64,9 +66,9 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
             </CardHeader>
 
             <div className='[ flex gap-1 padding-1 ]'>
-              { Object.entries(props.filtersValue).map(([key, val]) => 
+              { Object.values(props.filtersValue as DT_Object<Filter>).map((data) => 
               <DictionaryTag 
-                  keyName={key} value={val}
+                  keyName={data.keyName} value={data.value} op={data.op}
                   
                   onInteract={(e) => props.filtersSetter((state: any) => {
                     delete state[e];
@@ -78,15 +80,41 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
           </Card>
 
         <div className='[ flex flex-direction-column align-items-center gap-1 margin-block-start-1 ]'>
-          <KeyValueInput onInteract={(e) => setCurrentFilter(e)} blockClass='search__key-val-container' />
-          <div className='[ flex justify-content-end width-100 ]'>
+          <KeyValueInput 
+            onInteract={(e) => setCurrentFilter({ ...e, op: currentFilter.op })} 
+            blockClass='search__key-val-container' />
+
+          <div className='[ flex justify-content-space-between width-100 ]'>
+            <div className='[ flex gap-2  ]'>
+              <Button 
+                secondaryVariant='tight' 
+                onInteract={() => setCurrentFilter(state => ({ ...state, op: '<' }))}
+                compostClass='tag'
+                utilClass='border-radius-cubed'>
+                { '<' }
+              </Button>
+              <Button 
+                secondaryVariant='tight' 
+                onInteract={() => setCurrentFilter(state => ({ ...state, op: '===' }))}
+                compostClass='tag'
+                utilClass='border-radius-cubed'>
+                { '=' }
+              </Button>
+              <Button 
+                secondaryVariant='tight' 
+                onInteract={() => setCurrentFilter(state => ({ ...state, op: '>' }))}
+                compostClass='tag'
+                utilClass='border-radius-cubed'>
+                { '>' }
+              </Button>
+            </div>
             <Button 
               variant='primary' 
               secondaryVariant='tight' 
-              workCondition={containsEmptyValue(currentFilter)}
+              workCondition={containsEmptyValue(currentFilter, ['op'])}
               onInteract={() => {
                 props.filtersSetter((state: any) => 
-                  ({ ...state, [currentFilter.keyName]: currentFilter.value }))
+                  ({ ...state, [currentFilter.keyName]: { ...currentFilter } }))
 
                 props.showByNamesSetter(true);
               }}
@@ -101,7 +129,7 @@ const DictionarySearch = (props: Props_DictionarySearch) => {
           </ul>
         </div>
 
-        <div className='margin-block-1'>
+        <div className='[ margin-block-1 ]'>
           <CheckboxInput 
             text='Show items only' 
             type='string' 

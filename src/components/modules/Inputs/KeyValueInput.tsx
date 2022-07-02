@@ -12,7 +12,7 @@ const KeyValueInput = (props: Props_KeyValueInput) => {
 
 
     useEffect(() => {
-        props.onInteract && props.onInteract({keyName: key, value});
+        props.onInteract && props.onInteract({ keyName: key, value });
     }, [key, value])
 
     return (

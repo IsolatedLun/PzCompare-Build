@@ -16,7 +16,7 @@ export interface Props_MasterData {
 
 // Datatypes
 export type DT_Tuple<T, U> = [T, U];
-export type DT_Object<T> = string & { [key: string]: T }
+export type DT_Object<T> = object & { [key: string]: T }
 
 export type Setter<T> = React.Dispatch<React.SetStateAction<T>>;
 

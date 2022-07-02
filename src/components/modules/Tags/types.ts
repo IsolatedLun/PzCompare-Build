@@ -1,3 +1,4 @@
-import { KeyValDict, Props_Interactibe } from "../../types";
+import { DT_Object } from "../../../types";
+import { Filter, Props_Interactibe } from "../../types";
 
-export interface Props_DictionaryTag extends KeyValDict, Props_Interactibe<string> {  };
+export interface Props_DictionaryTag extends Filter, Props_Interactibe<string> {  };

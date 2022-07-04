@@ -7,7 +7,7 @@ import { Props_ObjectTable, Props_TableRow } from "./types";
 
 const TableRow = (props: Props_TableRow) => {
   if(props.keyName === 'EvolvedRecipe')
-    return <EvolvedRecipeRow { ...props } />
+    return <EvolvedRecipeRow key={props.keyName + props.value} { ...props } />
     
   else
     return (

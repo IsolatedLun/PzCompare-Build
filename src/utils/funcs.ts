@@ -236,8 +236,8 @@ export function filterObjectArr(objects: DT_Object<any>, items: string[], filter
 
             const op = filters[filterKey].op.length > 0 ? filters[filterKey].op : '===';
 
-            if(isNumber(filterVal) && eval(`objVal ${op} filterVal`))
-                return item
+            if(isNumber(filterVal) && eval(`Number(objVal) ${op} Number(filterVal)`))
+                return item;
             else if(objVal === filterVal)
                 return item;
         })
